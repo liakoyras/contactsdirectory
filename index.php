@@ -47,7 +47,7 @@
 			<a href="php/chooser.php">Κατάλογος</a>
 			<a href="contact.php">Επικοινωνία</a>
 			<a href="javascript:void(0);" class="icon" onclick="hamburger()">
-   				<i class="fa fa-bars"></i>
+   				<i id="hamburger" class="fa fa-bars"></i>
   			</a>
   			
   			<div id ="right" >

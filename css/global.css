@@ -1,3 +1,5 @@
+/*General*/
+
 body {
 	
 	margin: 0;
@@ -143,6 +145,12 @@ p.center {
 	  
 	background-color: #903E6E;
  
+}
+
+#hamburger{
+	
+	padding: 14px 16px;
+	
 }
 
 /* Page Footer */

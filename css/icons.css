@@ -1,16 +1,18 @@
 .col-container {
 	
-    display: table; /* Make the container element behave like a table */
-    width: 100%; /* Set full-width to expand the whole page */
+    display: table;
+    width: 100%;
 	table-layout: fixed;
 	text-align: center;
 	font-size: 30px;
+	
 }
 
 .col {
 	
-    display: table-cell;/* Make elements inside the container behave like table cells */
-	padding: 10px;
+    display: table-cell;
+	padding: 15px;
+	text-align: center;
 	
 }
 
@@ -20,7 +22,6 @@
     .col { 
 		
         display: block;
-        width: 100%;
 		
     }
 	

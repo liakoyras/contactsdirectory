@@ -33,15 +33,15 @@ function scrollHome(){
 	
 	if(width <= 600){
 		
-		add = 130;
-		newpos = position - add;
+		add = 38;
 		
 	}else{
 		
-		newpos = position;
+		add = 47;
 		
 	}
 	
+	newpos = position - add;
 	window.scrollTo(0, newpos);
 	
 }

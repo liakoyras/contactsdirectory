@@ -1,19 +1,27 @@
-.features {
+.col-container {
 	
-	font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    display: table; /* Make the container element behave like a table */
+    width: 100%; /* Set full-width to expand the whole page */
+	table-layout: fixed;
+	text-align: center;
 	font-size: 30px;
 }
 
-.features p {
+.col {
 	
+    display: table-cell;/* Make elements inside the container behave like table cells */
+	padding: 10px;
 	
-	font-family: 'PT Sans', Helvetica, Arial, sans-serif;
-
 }
 
-.features table {
-	
-    display: table;
-    width: 100%;
 
+@media only screen and (max-width: 600px) {
+	
+    .col { 
+		
+        display: block;
+        width: 100%;
+		
+    }
+	
 }

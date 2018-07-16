@@ -14,7 +14,6 @@
 		<link rel="icon" href="favicon.ico">
 		
 		<link rel="stylesheet" type="text/css" href="css/global.css">
-		<link rel="stylesheet" type="text/css" href="css/social.css">
 		<link rel="stylesheet" type="text/css" href="css/hero.css">
 		<link rel="stylesheet" type="text/css" href="css/icons.css">
 		<link rel="stylesheet" type="text/css" href="css/collapsible.css">
@@ -79,45 +78,28 @@
 		
 			<h1 class="center">Καλώς ήρθατε!</h1>
 			
-			<div class="features">
-				
-				<table>
-					
-					<tr>
-						
-						<th>
+			<div class="col-container">
 							
-							<div class="joiner">
+				<div class="col">
 
-								<i class="fa">&#xf0c7;</i><p>Απεριόριστος αποθηκευτικός χώρος</p>
+					<i class="fa">&#xf0c7;</i>
+					<p>Απεριόριστος αποθηκευτικός χώρος</p>
 
-							</div>
+				</div>
 
-						</th>
-						
-						<th>	
-							
-							<div class="joiner">
+				<div class="col">
 
-								<i class="fa">&#xf2be;</i><p>Φιλικό προς τον χρήστη</p>
-													
-							</div>
-							
-						</th>
-											
-						<th>	
-							
-							<div class="joiner">
+					<i class="fa">&#xf2be;</i>
+					<p>Φιλικό προς τον χρήστη</p>
 
-								<i class="fa">&#xf108;</i><p>Άριστη Τεχνική Υποστήριξη</p>
-													
-							</div>
-							
-						</th>					
-												
-					</tr>
-					
-				</table>
+				</div>
+
+				<div class="col">
+
+					<i class="fa">&#xf108;</i>
+					<p>Άριστη Τεχνική Υποστήριξη</p>
+
+				</div>
 						
 			</div>
 			

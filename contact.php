@@ -81,8 +81,9 @@
 		
 		<h3 class="center">Υπεύθυνος Επικοινωνίας</h3>
 		<p class="center">Ηλίας Χανής <br>
-		Τηλέφωνο: 6987084405<br><br>
-		<a href="mailto:iliashanis@gmail.com?Subject=Υπηρεσία%20Καταλόγου" target="_blank"><i class="fa">&#xf0e0;</i>Στείλτε μας email</a><br>
+		Τηλέφωνο: 6987084405<br>
+		
+		<a href="mailto:iliashanis@gmail.com?Subject=Υπηρεσία%20Καταλόγου" target="_blank"><i style="color: black; font-size: 30px;" class="fa">&#xf0e0;</i></a> Στείλτε μας email<br>
 		<a href="https://www.facebook.com/ilias.hanis" target="_blank" class="fa fa-facebook"><br></a> Βρείτε μας στο Facebook<br><br></p>
 			
 		

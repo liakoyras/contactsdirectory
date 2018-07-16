@@ -17,6 +17,7 @@
 		<link rel="stylesheet" type="text/css" href="css/social.css">
 		
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arvo">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
 		
@@ -81,7 +82,7 @@
 		<h3 class="center">Υπεύθυνος Επικοινωνίας</h3>
 		<p class="center">Ηλίας Χανής <br>
 		Τηλέφωνο: 6987084405<br><br>
-		<a href="mailto:iliashanis@gmail.com?Subject=Υπηρεσία%20Καταλόγου" target="_blank">Στείλτε μας email</a><br>
+		<a href="mailto:iliashanis@gmail.com?Subject=Υπηρεσία%20Καταλόγου" target="_blank"><i class="fa">&#xf0e0;</i>Στείλτε μας email</a><br>
 		<a href="https://www.facebook.com/ilias.hanis" target="_blank" class="fa fa-facebook"><br></a> Βρείτε μας στο Facebook<br><br></p>
 			
 		

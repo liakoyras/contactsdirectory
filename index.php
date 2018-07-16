@@ -8,7 +8,7 @@
 
 		<meta name="description" content="Online Directory Services">
 		<meta name="author" content="Ilias Chanis">
-		<meta name="last modified" content="01 Feb 2018">
+		<meta name="last modified" content="16 Jul 2018">
 		
 		<title>Αρχική</title>
 		<link rel="icon" href="favicon.ico">

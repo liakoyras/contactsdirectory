@@ -19,7 +19,7 @@
 		<link rel="stylesheet" type="text/css" href="css/collapsible.css">
 		
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+		
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arvo">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
 		
@@ -61,8 +61,7 @@
 							
 						}else{
 							
-							echo "&nbsp;<a href='php/login.php'>Σύνδεση</a>";
-							
+							echo "&nbsp;<a href='php/login.php'><i class='fa'>&#xf007;&nbsp; </i>Σύνδεση</a>";
 							
 						}
 						
@@ -100,7 +99,7 @@
 					<p>Άριστη Τεχνική Υποστήριξη</p>
 
 				</div>
-						
+				
 			</div>
 			
 			<h3 class="center"><br>Περισσότερες πληροφορίες για την υπηρεσία καταλόγου που παρέχεται μπορείτε να βρείτε παρακάτω.</h3>

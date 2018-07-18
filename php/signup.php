@@ -99,6 +99,12 @@
 
 			if (mysqli_query($connection, $query)){
 				
+				session_start();
+				$_SESSION["authorized"] = 1;
+				$_SESSION["username"] = "$login";
+
+				$row = $result->fetch_assoc();
+				$_SESSION["ID"] = $row["userID"];
 				echo "<script>alert('Η εγγραφή σας ήταν επιτυχής!');window.location.href='../index.php';</script>";
 					
 			}else{

@@ -39,18 +39,112 @@
 	}
 
 
-?>
+?><?php
+
+    if(isset($_POST["login"])){
+        
+        $login = trim($_POST["login"]);        
+        $pass = md5(trim($_POST["password"]));
+    	$email = trim($_POST["email"]);
+		$fname = trim($_POST["fname"]);
+		$lname = trim($_POST["lname"]);		
+
+        $servername = "localhost"; //do not change to dalab.ee.duth.gr (!)
+        $username = "57337";
+        $password = "lostre123";
+        $dbname = "db_57337";
+        
+        $connection = mysqli_connect($servername, $username, $password, $dbname);
+        if (!$connection){
+			die("Προέκυψε κάποιο σφάλμα." . mysqli_connect_error() . "Παρακαλούμε επικοινωνήστε μαζί μας.");
+		}
+		
+        mysqli_set_charset($connection,"utf8");
+		
+        $check = "SELECT `userID` FROM `users` WHERE `username` = '$login'";
+		
+		$result = mysqli_query($connection, $check);
+		
+		
+		if($result->num_rows == 0){
+			
+			$query = "INSERT INTO `users` (`username`, `password`, `email`, `firstname`, `lastname`)   VALUES ('$login', '$pass', '$email', '$fname', '$lname')";
+
+			if (mysqli_query($connection, $query)){
+				
+				session_start();
+				$_SESSION["authorized"] = 1;
+				$_SESSION["username"] = "$login";
+
+				$row = $result->fetch_assoc();
+				$_SESSION["ID"] = $row["userID"];
+				echo "<script>alert('Η εγγραφή σας ήταν επιτυχής!');window.location.href='../index.php';</script>";
+					
+			}else{
+				
+				echo "Σφάλμα:<br>" . mysqli_error($connection) . "<br>Παρακαλούμε επικοινωνήστε μαζί μας.";
+			}
+			
+		}else
+			
+			echo "<script>alert('Το όνομα χρήστη που επιλέξατε χρησιμοποιείται ήδη, επιλέξτε κάποιο άλλο.'); goback();</script>";
+        
+    }
+
+?> 
 
 
+<html>
 
-<body>
+	<head>
+	
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <form action="" method="POST">
+		<meta name="description" content="Online Directory Services">
+		<meta name="author" content="Ilias Chanis">
+		<meta name="last modified" content="18 Jul 2018">
+		
+		<title>Σύνδεση</title>
+		<link rel="icon" href="favicon.ico">
+		
+		<link rel="stylesheet" type="text/css" href="../css/global.css">
+		<link rel="stylesheet" type="text/css" href="../css/form.css">
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arvo">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
+		
+		<script src="../jscr/buttons.js"></script>
+		
+	</head>
+   
+    <body>
+    
+		<button class="back_button" onclick="home()">&larr;  Πίσω</button>
+	
+		<form accept-charset="utf-8" action="" method="POST">
 
-        Login: <input type="text" name="login"><br>
-        Password: <input type = "password" name = "password"><br>
-        <input type="submit" value="login">
-
-    </form>
-
-</body>
+			<div class="fcontainer">
+				
+				<h1>Σύνδεση</h1>
+				<p>Συμπληρώστε την παρακάτω φορμα για να συνδεθείτε.<br>Δεν έχετε λογαριασμό χρήστη; <a href="signup.php">Κάντε Εγγραφή</a></p>
+				<hr>
+				<label for="login"><b>Όνομα Χρήστη</b></label>
+				<input type="text" name="login" required><br>
+				<label for="password"><b>Κωδικός</b></label>
+				<input type="password" name="password" required><br>
+				
+				<div class="clearfloat">
+				
+					<button type="submit">Σύνδεση</button>
+					
+				</div>
+							
+			</div>
+			
+		</form>
+		
+	</body>
+	
+</html>

@@ -39,59 +39,7 @@
 	}
 
 
-?><?php
-
-    if(isset($_POST["login"])){
-        
-        $login = trim($_POST["login"]);        
-        $pass = md5(trim($_POST["password"]));
-    	$email = trim($_POST["email"]);
-		$fname = trim($_POST["fname"]);
-		$lname = trim($_POST["lname"]);		
-
-        $servername = "localhost"; //do not change to dalab.ee.duth.gr (!)
-        $username = "57337";
-        $password = "lostre123";
-        $dbname = "db_57337";
-        
-        $connection = mysqli_connect($servername, $username, $password, $dbname);
-        if (!$connection){
-			die("Προέκυψε κάποιο σφάλμα." . mysqli_connect_error() . "Παρακαλούμε επικοινωνήστε μαζί μας.");
-		}
-		
-        mysqli_set_charset($connection,"utf8");
-		
-        $check = "SELECT `userID` FROM `users` WHERE `username` = '$login'";
-		
-		$result = mysqli_query($connection, $check);
-		
-		
-		if($result->num_rows == 0){
-			
-			$query = "INSERT INTO `users` (`username`, `password`, `email`, `firstname`, `lastname`)   VALUES ('$login', '$pass', '$email', '$fname', '$lname')";
-
-			if (mysqli_query($connection, $query)){
-				
-				session_start();
-				$_SESSION["authorized"] = 1;
-				$_SESSION["username"] = "$login";
-
-				$row = $result->fetch_assoc();
-				$_SESSION["ID"] = $row["userID"];
-				echo "<script>alert('Η εγγραφή σας ήταν επιτυχής!');window.location.href='../index.php';</script>";
-					
-			}else{
-				
-				echo "Σφάλμα:<br>" . mysqli_error($connection) . "<br>Παρακαλούμε επικοινωνήστε μαζί μας.";
-			}
-			
-		}else
-			
-			echo "<script>alert('Το όνομα χρήστη που επιλέξατε χρησιμοποιείται ήδη, επιλέξτε κάποιο άλλο.'); goback();</script>";
-        
-    }
-
-?> 
+?>
 
 
 <html>

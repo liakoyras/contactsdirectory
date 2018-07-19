@@ -3,11 +3,11 @@
 	
 	if($_SESSION["authorized"] == 1){
 		
-		header('Location: //catalogue.php');
+		header('Location: ../catalogue.php');
 		
 	}else{
 		
-		header('Location: //false.php');
+		header('Location: ../false.php');
 		
 	}
 

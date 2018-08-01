@@ -174,7 +174,7 @@ p.center {
 
 }
 
-/*making the navbar responsive*/
+/*Responsive Navbar*/
 @media screen and (max-width: 600px) {
 	
 	.navbar a {

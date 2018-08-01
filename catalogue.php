@@ -14,6 +14,7 @@
 		<link rel="icon" href="favicon.ico">
 		
 		<link rel="stylesheet" type="text/css" href="css/global.css">
+		<link rel="stylesheet" type="text/css" href="css/catalogue.css">
 		
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		
@@ -58,13 +59,40 @@
 		
 		<section id="main">
 		
+			<?php
 			
+				session_start();		
+				$userid = $_SESSION["ID"];
+				echo "Your user ID is ".$userid;
+			
+				$servername = "localhost"; //do not change to dalab.ee.duth.gr (!)
+				$username = "57337";
+				$password = "lostre123";
+				$dbname = "db_57337";
+
+				$connection = mysqli_connect($servername, $username, $password, $dbname);
+				if (!$connection){
+					die("Προέκυψε κάποιο σφάλμα. " . mysqli_connect_error() . " Παρακαλούμε επικοινωνήστε μαζί μας.");
+				}
+
+
+				$query = "SELECT * FROM `catalogue` WHERE USERID='$userid'";
+
+				$result = mysqli_query($connection, $query);
+
+				if(mysqli_num_rows($result) == 0){
+	
+					echo "Δεν έχετε δημιουργήσει καμία επαφή.";
+
+				}
+			
+			?>
 		
 		</section>
 		
 		<div class="footer">
     	
-	    	<br>Copyright © 2018 · Ilias Chanis
+	    	<br>Copyright © 2018 · Ilias Chanis · All Rights Reserved
 	    	
 		</div>
 		

@@ -1,5 +1,19 @@
 #main {
 	
-	margin-top: 55px;
+	margin-top: 55px; /*margin equal to navbars height*/
+	
+}
+
+#main a {
+	
+	background-color: #903E6E;
+	float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 18px;
+  	display: block;
+	transition: 0.4s;
 	
 }

@@ -1,12 +1,15 @@
 <?php
 
-    if(isset($_POST["login"])){
+	session_start();
+
+    if(isset($_POST["fname"])){
         
-        $login = trim($_POST["login"]);        
-        $pass = md5(trim($_POST["password"]));
-    	$email = trim($_POST["email"]);
-		$fname = trim($_POST["fname"]);
-		$lname = trim($_POST["lname"]);		
+        $fname = trim($_POST["fname"]);
+ 		$lname = trim($_POST["lname"]);
+		$tel = trim($_POST["lname"]);
+		$email = trim($_POST["email"]);
+		$address = trim($_POST["address"]);
+		$userid = $_SESSION["ID"];
 
         $servername = "localhost"; //do not change to dalab.ee.duth.gr (!)
         $username = "57337";
@@ -19,36 +22,20 @@
 		}
 		
         mysqli_set_charset($connection,"utf8");
-		
-        $check = "SELECT `userID` FROM `users` WHERE `username` = '$login'";
-		
-		$result = mysqli_query($connection, $check);
-		
-		
-		if($result->num_rows == 0){
-			
-			$query = "INSERT INTO `users` (`username`, `password`, `email`, `firstname`, `lastname`)   VALUES ('$login', '$pass', '$email', '$fname', '$lname')";
+	
+		$query = "INSERT INTO `catalogue` (`FIRSTNAME`, `LASTNAME`, `PHONE`, `ADDRESS`, `EMAIL`, `USERID`)   VALUES ('$fname', '$lname', '$tel', '$address', '$email', '$userid')";
 
-			if (mysqli_query($connection, $query)){
-				
-				session_start();
-				$_SESSION["authorized"] = 1;
-				$_SESSION["username"] = "$login";
+		if (mysqli_query($connection, $query)){
 
-				$row = $result->fetch_assoc();
-				$_SESSION["ID"] = $row["userID"];
-				echo "<script>alert('Η εγγραφή σας ήταν επιτυχής!');window.location.href='../index.php';</script>";
+				echo "<script>alert('Η επαφή αποθηκεύτηκε επιτυχώς!');window.location.href='../catalogue.php';</script>";
 					
-			}else{
+		}else{
 				
-				echo "Σφάλμα:<br>" . mysqli_error($connection) . "<br>Παρακαλούμε επικοινωνήστε μαζί μας.";
-			}
+			echo "Σφάλμα:<br>" . mysqli_error($connection) . "<br>Παρακαλούμε επικοινωνήστε μαζί μας.";
 			
-		}else
-			
-			echo "<script>alert('Το όνομα χρήστη που επιλέξατε χρησιμοποιείται ήδη, επιλέξτε κάποιο άλλο.'); goback();</script>";
-        
-    }
+		}
+		
+	}
 
 ?>
 
@@ -75,7 +62,6 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
 		
 		<script src="../jscr/buttons.js"></script>
-		<script src="../jscr/validation.js"></script>
 		
 	</head>
    
@@ -83,30 +69,29 @@
     
 		<button class="back_button" onclick="home()">&larr;  Πίσω</button>
 	
-		<form accept-charset="utf-8" name="signup" action="" onSubmit="return validation()" method="POST">
+		<form accept-charset="utf-8" name="signup" action="" method="POST">
 		
 			<div class="fcontainer">
 				
 				<h1>Δημιουργία Νέας Επαφής</h1>
 				<p>Συμπληρώστε τα στοιχεία της επαφής που θέλετε να αποθηκεύσετε στην παρακάτω φορμα και πατήστε στο κουμπί Αποθήκευση για να την αποθηκεύσετε. Εάν κάνετε κάποιο λάθος, μπορείτε να πατήσετε στο κουμπί Αναίρεση.<br>Τα πεδία σημειωμένα με * είναι υποχρεωτικά.</p>
 				<hr>
-				<label for="login"><b>Όνομα Χρήστη *</b></label>
-				<input type="text" name="login" required><br>
-				<label for="password"><b>Κωδικός *</b></label>
-				<input type="password" name="password" required><br>
-				<label for="passrep"><b>Επανάληψη Κωδικού *</b></label>
-				<input type="password" name="passrep" required><br>
-				<label for="email"><b>Email *</b></label>
-				<input type="text" name="email" required><br>
-				<label for="fname"><b>Όνομα</b></label>
-				<input type="text" name="fname"><br>
+				<label for="fame"><b>Όνομα *</b></label>
+				<input type="text" name="fname" required><br>
 				<label for="lname"><b>Επώνυμο</b></label>
 				<input type="text" name="lname"><br>
+				<label for="tel"><b>Τηλέφωνο *</b></label>
+				<input type="text" name="tel" required><br>
+				<label for="email"><b>Email</b></label>
+				<input type="email" name="email"><br>
+				<label for="address"><b>Διεύθυνση</b></label>
+				<input type="text" name="address"><br>
+
 				
 				<div class="clearfloat">
 				
 					<button type="reset" class="clearbtn">Αναίρεση</button>
-					<button type="submit" class="signupbtn">Εγγραφή</button>
+					<button type="submit" class="signupbtn">Αποθήκευση</button>
 					
 				</div>
 				

@@ -62,8 +62,6 @@
 			<a href="php/newcon.php">Δημιουργία Επαφής</a>
 			
 			<?php
-					
-				$userid = $_SESSION["ID"];
 			
 				$servername = "localhost"; //do not change to dalab.ee.duth.gr (!)
 				$username = "57337";
@@ -74,7 +72,8 @@
 				if (!$connection){
 					die("Προέκυψε κάποιο σφάλμα. " . mysqli_connect_error() . " Παρακαλούμε επικοινωνήστε μαζί μας.");
 				}
-
+				
+				$userid = $_SESSION["ID"];
 
 				$query = "SELECT * FROM `catalogue` WHERE USERID='$userid'";
 

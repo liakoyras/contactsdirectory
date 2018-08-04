@@ -58,12 +58,12 @@
 	    </div>
 		
 		<section id="main">
-		
-			<?php
 			
-				session_start();		
+			<a href="php/newcon.php">Δημιουργία Επαφής</a>
+			
+			<?php
+					
 				$userid = $_SESSION["ID"];
-				echo "Your user ID is ".$userid;
 			
 				$servername = "localhost"; //do not change to dalab.ee.duth.gr (!)
 				$username = "57337";

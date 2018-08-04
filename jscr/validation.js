@@ -51,3 +51,51 @@ function validation(){
 	}
 	
 }
+
+function conVal(){
+            
+	var mail = /\S+@\S+\.\S+/;
+	var digit = /\d/;
+	
+	var fname = document.newcon.fname.value;
+	var lname = document.newcon.lname.value;
+	var telephone = document.newcon.tel.value;
+	var email = document.newcon.email.value;
+	
+	if(fname.length > 50){
+
+		alert("Το όνομά πρέπει να αποτελείται από λιγότερους από 50 χαρακτήρες.");
+		return false;
+
+	}
+	
+	if(lname.length > 50){
+
+		alert("Το επώνυμο πρέπει να αποτελείται από λιγότερους από 50 χαρακτήρες.");
+		return false;
+
+	}
+	
+	if(!(email.match(mail))){
+		
+		alert("Πρέπει να δώσετε μία έγκυρη διεύθυνση email.");
+		return false;
+		
+	}
+	
+	if(!(telephone.match(digit))){
+		
+		alert("Το τηλέφωνο πρέπει να περιέχει αριθμούς");
+		return false;
+		
+	}
+	
+	if(telephone.length > 20){
+		
+		
+		alert("Το τηλέφωνο πρέπει να περιέχει το πολύ 20 χαρακτήρες");
+		return false;
+		
+	}
+		
+}

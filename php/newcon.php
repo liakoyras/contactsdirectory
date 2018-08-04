@@ -62,6 +62,7 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
 		
 		<script src="../jscr/buttons.js"></script>
+		<script src="../jscr/validation.js"></script>
 		
 	</head>
    
@@ -69,7 +70,7 @@
     
 		<button class="back_button" onclick="home()">&larr;  Πίσω</button>
 	
-		<form accept-charset="utf-8" name="signup" action="" method="POST">
+		<form accept-charset="utf-8" name="newcon" action="" onSubmit="return conVal()" method="POST">
 		
 			<div class="fcontainer">
 				

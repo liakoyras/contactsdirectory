@@ -76,10 +76,14 @@ function conVal(){
 
 	}
 	
-	if(!(email.match(mail))){
+	if(email.length >= 1){
 		
-		alert("Πρέπει να δώσετε μία έγκυρη διεύθυνση email.");
-		return false;
+		if(!(email.match(mail))){
+		
+			alert("Πρέπει να δώσετε μία έγκυρη διεύθυνση email.");
+			return false;
+			
+		}
 		
 	}
 	

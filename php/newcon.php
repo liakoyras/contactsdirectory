@@ -84,7 +84,7 @@
 				<label for="tel"><b>Τηλέφωνο *</b></label>
 				<input type="text" name="tel" required><br>
 				<label for="email"><b>Email</b></label>
-				<input type="email" name="email"><br>
+				<input type="text" name="email"><br>
 				<label for="address"><b>Διεύθυνση</b></label>
 				<input type="text" name="address"><br>
 

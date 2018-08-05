@@ -22,6 +22,7 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
 		
 		<script src="jscr/buttons.js"></script>
+		<script src="jscr/ajaxtable.js"></script>
 		
 	</head>
 	
@@ -59,7 +60,16 @@
 		
 		<section id="main">
 			
-			<a href="php/newcon.php">Δημιουργία Επαφής</a>
+			<h1 class="center">Αυτή είναι η σελίδα του καταλόγου σας.</h1>
+			<h3 class="center">Εδώ μπορείτε να προσθέσετε, να τροποποιήσετε ή να διαγράψετε μια επαφή, καθώς και να προβάλετε ή να αναζητήσετε στις επαφές σας.<br></h3>
+			
+			<p class="center"><a href="php/newcon.php">Δημιουργία Επαφής</a></p>
+			
+			<div id="contactTable">
+				
+				
+				
+			</div>
 			
 			<?php
 			
@@ -78,10 +88,11 @@
 				$query = "SELECT * FROM `catalogue` WHERE USERID='$userid'";
 
 				$result = mysqli_query($connection, $query);
+				$_SESSION["contactnum"] = mysqli_num_rows($result);
 
 				if(mysqli_num_rows($result) == 0){
 	
-					echo "Δεν έχετε δημιουργήσει καμία επαφή.";
+					echo "<p class='center'>Δεν έχετε δημιουργήσει καμία επαφή ακόμα!</p>";
 
 				}
 			

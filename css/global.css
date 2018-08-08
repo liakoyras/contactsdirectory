@@ -11,11 +11,10 @@ body {
 	
 }
 
-h3.center {
+h3 {
 	
 	float: none;
 	font-family: 'Arvo', Georgia, Times, serif;
-	text-align: center;
 	font-size: 19px;
 	
 }
@@ -23,12 +22,6 @@ h3.center {
 h1 {
 
 	font-family: 'Arvo', Georgia, Times, serif;
-	
-}
-
-h1.center {
-
-	text-align: center;
 	padding: 25px;
 	
 }
@@ -39,7 +32,7 @@ p {
 	
 }
 
-p.center {
+.center {
 	
 	text-align: center;
 	

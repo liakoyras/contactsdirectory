@@ -62,18 +62,25 @@ function conVal(){
 	var telephone = document.newcon.tel.value;
 	var email = document.newcon.email.value;
 	
-	if(fname.length > 50){
+	if(fname.length > 30){
 
-		alert("Το όνομά πρέπει να αποτελείται από λιγότερους από 50 χαρακτήρες.");
+		alert("Το όνομά πρέπει να αποτελείται από λιγότερους από 30 χαρακτήρες.");
 		return false;
 
 	}
 	
-	if(lname.length > 50){
+	if(lname.length > 30){
 
-		alert("Το επώνυμο πρέπει να αποτελείται από λιγότερους από 50 χαρακτήρες.");
+		alert("Το επώνυμο πρέπει να αποτελείται από λιγότερους από 30 χαρακτήρες.");
 		return false;
 
+	}
+	
+	if(email.length > 30){
+		
+		alert("Το email πρέπει να περιέχει το πολύ 30 χαρακτήρες.");
+		return false;		
+		
 	}
 	
 	if(email.length >= 1){
@@ -89,15 +96,23 @@ function conVal(){
 	
 	if(!(telephone.match(digit))){
 		
-		alert("Το τηλέφωνο πρέπει να περιέχει αριθμούς");
+		alert("Το τηλέφωνο πρέπει να περιέχει αριθμούς.");
 		return false;
 		
 	}
 	
-	if(telephone.length > 20){
+	if(telephone.length > 15){
 		
 		
-		alert("Το τηλέφωνο πρέπει να περιέχει το πολύ 20 χαρακτήρες");
+		alert("Το τηλέφωνο πρέπει να περιέχει το πολύ 15 χαρακτήρες.");
+		return false;
+		
+	}
+	
+	if(telephone.length > 40){
+		
+		
+		alert("Η διεύθυνση πρέπει να περιέχει το πολύ 40 χαρακτήρες.");
 		return false;
 		
 	}

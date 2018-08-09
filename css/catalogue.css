@@ -36,3 +36,35 @@
 	}	
 	
 }
+
+table {
+
+    border-collapse: collapse;
+	margin: 50px auto;
+	font-size: 15px;
+	
+}
+
+table, td, th {
+	
+	white-space: nowrap;
+    border: 1px solid black;
+	padding: 4px;
+}
+
+th {
+	
+	text-align: left;
+
+}
+
+#main #editor {
+	
+	margin: 0;
+	background: transparent;
+    color: black;
+    text-align: center;
+    padding: 3px;
+    text-decoration: underline;
+	
+}

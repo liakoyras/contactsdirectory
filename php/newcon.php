@@ -6,7 +6,7 @@
         
         $fname = trim($_POST["fname"]);
  		$lname = trim($_POST["lname"]);
-		$tel = trim($_POST["lname"]);
+		$tel = trim($_POST["tel"]);
 		$email = trim($_POST["email"]);
 		$address = trim($_POST["address"]);
 		$userid = $_SESSION["ID"];
@@ -26,8 +26,9 @@
 		$query = "INSERT INTO `catalogue` (`FIRSTNAME`, `LASTNAME`, `PHONE`, `ADDRESS`, `EMAIL`, `USERID`)   VALUES ('$fname', '$lname', '$tel', '$address', '$email', '$userid')";
 
 		if (mysqli_query($connection, $query)){
-
-				echo "<script>alert('Η επαφή αποθηκεύτηκε επιτυχώς!');window.location.href='../catalogue.php';</script>";
+			
+			mysqli_close($connection);
+			echo "<script>alert('Η επαφή αποθηκεύτηκε επιτυχώς!');window.location.href='../catalogue.php';</script>";
 					
 		}else{
 				

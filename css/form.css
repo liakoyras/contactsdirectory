@@ -24,7 +24,7 @@ hr {
 }
 
 /*Creating 100% input fields*/
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email]{
 	
     width: 100%;
     padding: 15px;
@@ -35,7 +35,7 @@ input[type=text], input[type=password] {
 	
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
 	
 	background-color: #d5c3d1;
     outline: none;

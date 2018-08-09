@@ -32,6 +32,9 @@
 			
 			$row = $result->fetch_assoc();
 			$_SESSION["ID"] = $row["userID"];
+			
+			mysqli_close($connection);
+			
 			echo "<script>alert('Συνδεθήκατε με επιτυχία!');window.location.href='../index.php';</script>";
 			
 		}

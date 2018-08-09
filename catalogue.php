@@ -8,13 +8,13 @@
 
 		<meta name="description" content="Online Directory Services">
 		<meta name="author" content="Ilias Chanis">
-		<meta name="last modified" content="16 Jul 2018">
+		<meta name="last modified" content="19 Jul 2018">
 		
 		<title>Κατάλογος</title>
 		<link rel="icon" href="favicon.ico">
 		
 		<link rel="stylesheet" type="text/css" href="css/global.css">
-		<link rel="stylesheet" type="text/css" href="css/false.css">
+		<link rel="stylesheet" type="text/css" href="css/catalogue.css">
 		
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		
@@ -22,6 +22,7 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
 		
 		<script src="jscr/buttons.js"></script>
+		<script src="jscr/ajaxtable.js"></script>
 		
 	</head>
 	
@@ -38,7 +39,8 @@
   			
   			<div id ="right" >
 
-				<?php 
+				<?php
+				
 						error_reporting(0);
 						session_start();
 						if($_SESSION["authorized"] == 1){
@@ -58,20 +60,23 @@
 	    </div>
 		
 		<section id="main">
-		
-			<h1 class="center">Λυπούμαστε :(</h1>
 			
-			<h3 class="center"><br>Για να έχετε πρόσβαση στην υπηρεσία καταλόγου, πρέπει να συνδεθείτε.</h3>
-
-			<p class="center">Εαν δεν έχετε λογαριασμό χρήστη, για να εγγραφείτε πατήστε <a href="php/signup.php">εδώ</a>.<br>Για να συνδεθείτε και να δείτε τις επαφές σας, πατήστε <a href="php/login.php">εδώ</a>.</p>
+			<h1 class="center">Αυτή είναι η σελίδα του καταλόγου σας.</h1>
+			<h3 class="center">Εδώ μπορείτε να προσθέσετε, να τροποποιήσετε ή να διαγράψετε μια επαφή, καθώς και να προβάλετε ή να αναζητήσετε στις επαφές σας.<br></h3>
 			
-			<p class="center">Για να δείτε περισσσότερες πληροφορίες για την υπηρεσία που παρέχουμε, πατήστε <a href="index.php#main">εδώ</a>.</p>
+			<p class="center"><a href="php/newcon.php">Δημιουργία Επαφής</a></p>
+			
+			<div id="contactTable">
+				
+				
+				
+			</div>
 		
 		</section>
 		
 		<div class="footer">
     	
-	    	<br>Copyright © 2018 · Ilias Chanis
+	    	<br>Copyright © 2018 · Ilias Chanis · All Rights Reserved
 	    	
 		</div>
 		

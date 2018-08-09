@@ -46,9 +46,11 @@
 			
 		}else
 			
+			mysqli_close($connection);
 			echo "<script>alert('Το όνομα χρήστη που επιλέξατε χρησιμοποιείται ήδη, επιλέξτε κάποιο άλλο.'); goback();</script>";
         
     }
+
 
 ?>
 

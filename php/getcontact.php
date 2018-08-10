@@ -1,5 +1,5 @@
 <?php
-	
+
 	session_start();
 
 	$servername = "localhost"; //do not change to dalab.ee.duth.gr (!)
@@ -19,10 +19,10 @@
 	mysqli_query($connection, "SET NAMES 'utf8'");
 	
 	$query = "SELECT * FROM `catalogue` WHERE USERID='$userid'";
-
+	
 	$result = mysqli_query($connection, $query);
 	$contactnum = mysqli_num_rows($result);
-
+	
 	if(!($contactnum == 0)){
 		
 		echo "<table>
@@ -37,13 +37,15 @@
 		
 			while($row = mysqli_fetch_array($result)){
 				
+				$contactid = $row["ID"];
+				
 				echo "<tr>";
 				echo "<td>" . $row['FIRSTNAME'] . "</td>";
 				echo "<td>" . $row['LASTNAME'] . "</td>";
 				echo "<td>" . $row['PHONE'] . "</td>";
 				echo "<td>" . $row['ADDRESS'] . "</td>";
 				echo "<td>" . $row['EMAIL'] . "</td>";
-				echo "<td> <a id='editor' href='delete.php'>Διαγραφή</a><a id='editor' href='edit.php'>Επεξεργασία</a> </td>";
+				echo "<td> <a id='editor' onClick='confirmDelete(".$contactid.")'>Διαγραφή</a><a id='editor' href='edit.php'>Επεξεργασία</a> </td>";
 				echo "</tr>";
 				
 			}

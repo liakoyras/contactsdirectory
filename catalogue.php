@@ -23,6 +23,7 @@
 		
 		<script src="jscr/buttons.js"></script>
 		<script src="jscr/ajaxtable.js"></script>
+		<script src="jscr/confirmation.js"></script>
 		
 	</head>
 	
@@ -41,17 +42,17 @@
 
 				<?php
 				
-						error_reporting(0);
-						session_start();
-						if($_SESSION["authorized"] == 1){
+					error_reporting(0);
+					session_start();
+					if($_SESSION["authorized"] == 1){
 							
-							echo "Γεια σου " . $_SESSION["username"] . "&nbsp;<a href='php/logout.php'>Αποσύνδεση</a>";
+						echo "Γεια σου " . $_SESSION["username"] . "&nbsp;<a href='php/logout.php'>Αποσύνδεση</a>";
 							
-						}else{
+					}else{
 							
-							echo "&nbsp;<a href='php/login.php'><i class='fa'>&#xf007;&nbsp;&nbsp;</i>Σύνδεση</a>";
+						echo "&nbsp;<a href='php/login.php'><i class='fa'>&#xf007;&nbsp;&nbsp;</i>Σύνδεση</a>";
 							
-						}
+					}
 						
 				?>
 					

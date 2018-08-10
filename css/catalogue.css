@@ -6,7 +6,7 @@
 
 #main a {
 	
-	margin: 20px 0 0;
+	margin: 20px 0;
 	background-color: #903E6E;
     color: #f2f2f2;
     text-align: center;
@@ -66,5 +66,6 @@ th {
     text-align: center;
     padding: 3px;
     text-decoration: underline;
+	cursor: pointer;
 	
 }

@@ -83,7 +83,7 @@
    
     <body>
     
-		<button class="back_button" onclick="home()">&larr;  Πίσω</button>
+		<button class="back_button" onClick ="home()">&larr;  Πίσω</button>
 	
 		<form accept-charset="utf-8" name="signup" action="" onSubmit="return validation()" method="POST">
 		

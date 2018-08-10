@@ -1,5 +1,5 @@
 function showContacts(){
-		
+	
 	if(window.XMLHttpRequest){
 
 		// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -20,7 +20,7 @@ function showContacts(){
 		}
 	};
 
-	xmlhttp.open("GET","../php/getcontact.php",true);
+	xmlhttp.open("GET","php/getcontact.php",true);
 	xmlhttp.send();
 
 }

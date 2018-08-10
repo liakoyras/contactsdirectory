@@ -35,7 +35,7 @@
 			
 			mysqli_close($connection);
 			
-			echo "<script>alert('Συνδεθήκατε με επιτυχία!');window.location.href='../index.php';</script>";
+			echo "<script>alert('Συνδεθήκατε με επιτυχία!');window.location.href='../catalogue.php';</script>";
 			
 		}
 		

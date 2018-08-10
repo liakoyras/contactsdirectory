@@ -17,12 +17,6 @@ function home() {
 	
 }
 
-function goback(){
-	
-	window.history.back();
-	
-}
-
 function scrollHome(){
 	
 	var welcome = document.getElementById("main");

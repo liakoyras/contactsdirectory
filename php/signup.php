@@ -37,19 +37,24 @@
 
 				$row = $result->fetch_assoc();
 				$_SESSION["ID"] = $row["userID"];
-				echo "<script>alert('Η εγγραφή σας ήταν επιτυχής!');window.location.href='../index.php';</script>";
+				echo "<script>alert('Η εγγραφή σας ήταν επιτυχής!');window.location.href='../catalogue.php';</script>";
 					
 			}else{
 				
 				echo "Σφάλμα:<br>" . mysqli_error($connection) . "<br>Παρακαλούμε επικοινωνήστε μαζί μας.";
 			}
 			
-		}else
-			
+		}else{
+				
 			mysqli_close($connection);
-			echo "<script>alert('Το όνομα χρήστη που επιλέξατε χρησιμοποιείται ήδη, επιλέξτε κάποιο άλλο.'); goback();</script>";
-        
-    }
+			echo "<script>
+				alert('Το όνομα χρήστη που επιλέξατε χρησιμοποιείται ήδη, επιλέξτε κάποιο άλλο.');
+				window.history.go(-1);
+			</script>";
+		
+		}
+    
+	}
 
 
 ?>

@@ -15,6 +15,8 @@
 		
 	}
 	
+	mysqli_query($connection, "SET NAMES 'utf8'");
+
 	$query = "SELECT * FROM `catalogue` WHERE ID='$contactid'";
 	$result = mysqli_query($connection, $query);
 	$row = mysqli_fetch_array($result);

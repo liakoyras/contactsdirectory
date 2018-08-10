@@ -45,7 +45,7 @@
 				echo "<td>" . $row['PHONE'] . "</td>";
 				echo "<td>" . $row['ADDRESS'] . "</td>";
 				echo "<td>" . $row['EMAIL'] . "</td>";
-				echo "<td> <a id='editor' onClick='confirmDelete(".$contactid.")'>Διαγραφή</a><a id='editor' href='edit.php'>Επεξεργασία</a> </td>";
+				echo "<td> <a id='editor' onClick='confirmDelete(".$contactid.")'>Διαγραφή</a> <a id='editor' href='php/edit.php?contactid=".$contactid."'>Επεξεργασία</a> </td>";
 				echo "</tr>";
 				
 			}

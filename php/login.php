@@ -30,7 +30,7 @@
 			$_SESSION["authorized"] = 1;
 			$_SESSION["username"] = "$login";
 			
-			$row = $result->fetch_assoc();
+			$row = mysqli_fetch_array($result);
 			$_SESSION["ID"] = $row["userID"];
 			
 			mysqli_close($connection);

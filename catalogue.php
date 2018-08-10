@@ -51,7 +51,7 @@
 					}else{
 							
 						echo "&nbsp;<a href='php/login.php'><i class='fa'>&#xf007;&nbsp;&nbsp;</i>Σύνδεση</a>";
-							
+						
 					}
 						
 				?>

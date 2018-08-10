@@ -1,8 +1,25 @@
 <?php
-
+	
 	session_start();
+	
+	$contactid = $_GET["contactid"];
+	$servername = "localhost"; //do not change to dalab.ee.duth.gr (!)
+	$username = "57337";
+	$password = "lostre123";
+	$dbname = "db_57337";
 
-    if(isset($_POST["fname"])){
+	$connection = mysqli_connect($servername, $username, $password, $dbname);
+	if(!$connection){
+		
+		die("Προέκυψε κάποιο σφάλμα. " . mysqli_connect_error() . " Παρακαλούμε επικοινωνήστε μαζί μας.");
+		
+	}
+	
+	$query = "SELECT * FROM `catalogue` WHERE ID='$contactid'";
+	$result = mysqli_query($connection, $query);
+	$row = mysqli_fetch_array($result);
+	
+	if(isset($_POST["fname"])){
         
         $fname = trim($_POST["fname"]);
  		$lname = trim($_POST["lname"]);
@@ -11,19 +28,9 @@
 		$address = trim($_POST["address"]);
 		$userid = $_SESSION["ID"];
 		
-        $servername = "localhost"; //do not change to dalab.ee.duth.gr (!)
-        $username = "57337";
-        $password = "lostre123";
-        $dbname = "db_57337";
-        
-        $connection = mysqli_connect($servername, $username, $password, $dbname);
-        if (!$connection){
-			die("Προέκυψε κάποιο σφάλμα." . mysqli_connect_error() . "Παρακαλούμε επικοινωνήστε μαζί μας.");
-		}
-		
         mysqli_set_charset($connection,"utf8");
 		
-		$query = "INSERT INTO `catalogue` (`FIRSTNAME`, `LASTNAME`, `PHONE`, `ADDRESS`, `EMAIL`, `USERID`)   VALUES ('$fname', '$lname', '$tel', '$address', '$email', '$userid')";
+		$query = "UPDATE `catalogue` SET `FIRSTNAME` = '$fname', `LASTNAME` = '$lname', `PHONE` = '$tel', `ADDRESS` = '$address', `EMAIL` = '$email' WHERE ID='$contactid'";
 		
 		if (mysqli_query($connection, $query)){
 			
@@ -38,8 +45,8 @@
 		
 	}
 
-?>
 
+?>
 
 <html>
 
@@ -52,7 +59,7 @@
 		<meta name="author" content="Ilias Chanis">
 		<meta name="last modified" content="18 Jul 2018">
 		
-		<title>Νέα Επαφή</title>
+		<title>Επεξεργασία Επαφής</title>
 		<link rel="icon" href="favicon.ico">
 		
 		<link rel="stylesheet" type="text/css" href="../css/global.css">
@@ -75,28 +82,27 @@
 		
 			<div class="fcontainer">
 				
-				<h1>Δημιουργία Νέας Επαφής</h1>
-				<p>Συμπληρώστε τα στοιχεία της επαφής που θέλετε να αποθηκεύσετε στην παρακάτω φορμα και πατήστε στο κουμπί Αποθήκευση για να την αποθηκεύσετε. Εάν κάνετε κάποιο λάθος, μπορείτε να πατήσετε στο κουμπί Αναίρεση.<br>Τα πεδία σημειωμένα με * είναι υποχρεωτικά.</p>
+				<h1>Επεξεργασία Επαφής</h1>
+				<p>Κάντε τις αλλαγές που επιθυμείτε και πατήστε στο κουμπί Αποθήκευση Αλλαγών για να αλλάξετε την επαφή σας. Εάν κάνετε κάποιο λάθος, μπορείτε να πατήσετε στο κουμπί Αναίρεση.<br>Τα πεδία σημειωμένα με * είναι υποχρεωτικά.</p>
 				<hr>
 				<label for="fame"><b>Όνομα *</b></label>
-				<input type="text" name="fname" required><br>
+				<input type="text" name="fname" value="<?php echo $row['FIRSTNAME'];?>"required><br>
 				<label for="lname"><b>Επώνυμο</b></label>
-				<input type="text" name="lname"><br>
+				<input type="text" name="lname" value="<?php echo $row['LASTNAME'];?>"><br>
 				<label for="tel"><b>Τηλέφωνο *</b></label>
-				<input type="text" name="tel" required><br>
+				<input type="text" name="tel" value="<?php echo $row['PHONE'];?>"required><br>
 				<label for="email"><b>Email</b></label>
-				<input type="text" name="email"><br>
+				<input type="text" name="email" value="<?php echo $row['EMAIL'];?>"><br>
 				<label for="address"><b>Διεύθυνση</b></label>
-				<input type="text" name="address"><br>
+				<input type="text" name="address" value="<?php echo $row['ADDRESS'];?>"><br>
 
 				
 				<div class="clearfloat">
 				
 					<button type="reset" class="clearbtn">Αναίρεση</button>
-					<button type="submit" class="signupbtn">Αποθήκευση</button>
+					<button type="submit" class="signupbtn">Αποθήκευση Αλλαγών</button>
 					
 				</div>
-				
 				
 			</div>
 			

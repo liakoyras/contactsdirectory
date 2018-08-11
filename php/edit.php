@@ -30,14 +30,14 @@
 		$address = trim($_POST["address"]);
 		$userid = $_SESSION["ID"];
 		
-        mysqli_set_charset($connection,"utf8");
+
 		
 		$query = "UPDATE `catalogue` SET `FIRSTNAME` = '$fname', `LASTNAME` = '$lname', `PHONE` = '$tel', `ADDRESS` = '$address', `EMAIL` = '$email' WHERE ID='$contactid'";
 		
 		if (mysqli_query($connection, $query)){
 			
 			mysqli_close($connection);
-			echo "<script>alert('Η επαφή αποθηκεύτηκε επιτυχώς!');window.location.href='../catalogue.php';</script>";
+			echo "<script>alert('Οι αλλαγές αποθηκεύτηκαν επιτυχώς!');window.location.href='../catalogue.php';</script>";
 			
 		}else{
 			

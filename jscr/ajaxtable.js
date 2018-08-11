@@ -1,4 +1,4 @@
-function showContacts(){
+function showContacts(str){
 	
 	if(window.XMLHttpRequest){
 
@@ -20,7 +20,7 @@ function showContacts(){
 		}
 	};
 
-	xmlhttp.open("GET","php/getcontact.php",true);
+	xmlhttp.open("GET","php/getcontact.php?p="+str,true);
 	xmlhttp.send();
 
 }

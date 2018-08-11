@@ -1,7 +1,7 @@
 #main {
 	
 	margin-top: 55px; /*margin equal to navbars height*/
-	
+
 }
 
 #main a {
@@ -19,13 +19,29 @@
 
 #main h3 {
 	
-	margin:0 35px 35px;
+	margin: 0 35px 35px;
 	overflow: auto;
 	display: block;
 	
 }
 
+input[type=text] {
+	
+    width: 50%;
+    padding: 15px;
+    margin: 30px auto;
+    display: block;
+    border: none;
+    background: #f0dbe7;
+	
+}
 
+input[type=text]:focus {
+	
+	background-color: #d5c3d1;
+    outline: none;
+	
+}
 
 @media screen and (max-width: 600px) {
 	
@@ -33,15 +49,22 @@
 	
 		margin: 0 25px 25px;
 	
-	}	
+	}
+	
+	input[type=text] {
+		
+		width: 85%;
+		
+	}
 	
 }
 
 table {
 
     border-collapse: collapse;
-	margin: 50px auto;
+	margin: 50px auto 5px;
 	font-size: 15px;
+	overflow-x: scroll;
 	
 }
 
@@ -58,6 +81,21 @@ th {
 
 }
 
+#contactTable {
+	
+	overflow-x: auto;
+		
+}
+
+/*
+
+#contactTable::-webkit-scrollbar {
+	
+ 	display: none;
+	
+}
+*/
+
 #main #editor {
 	
 	margin: 0;
@@ -69,3 +107,14 @@ th {
 	cursor: pointer;
 	
 }
+
+/*
+@media screen and (max-width: 800px) {
+	
+	#contactTable::-webkit-scrollbar {
+	
+  		display: inline-block;
+	
+	}
+	
+}*/

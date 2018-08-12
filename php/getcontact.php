@@ -58,7 +58,33 @@
 			
 		}else{
 			
-			$contactresult = "ΟΥΑΟΥ";
+			$searchq = "SELECT * FROM `catalogue` WHERE FIRSTNAME LIKE '%".$q."%'";
+			$sresult = mysqli_query($connection, $searchq);
+			
+			if(mysqli_num_rows($sresult) > 0){
+				
+				$contactresult = "<table>";
+				
+				while($row = mysqli_fetch_array($sresult)){
+					
+					$contactid = $row["ID"];
+
+					$contact = "<tr>" .
+					"<td>" . $row['FIRSTNAME'] . "</td>" .
+					"<td>" . $row['LASTNAME'] . "</td>" .
+					"<td>" . $row['PHONE'] . "</td>" .
+					"<td>" . $row['ADDRESS'] . "</td>" .
+					"<td>" . $row['EMAIL'] . "</td>" .
+					"<td> <a id='editor' onClick='confirmDelete(".$contactid.")'>Διαγραφή</a> <a id='editor' href='php/edit.php?contactid=".$contactid."'>Επεξεργασία</a> </td>" .
+					"</tr>";
+					
+					$contactresult = $contactresult . $contact;
+					
+				}
+				
+				$contactresult = $contactresult . "</table>";
+				
+			}
 			
 		}
 		

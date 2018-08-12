@@ -71,7 +71,7 @@
 			
 			<form>
 			
-				<input type="text" onkeyup="showContacts(this.value)">
+				<input type="text" value="" onkeyup="showContacts(this.value)">
 			
 			</form>
 			

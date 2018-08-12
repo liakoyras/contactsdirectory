@@ -1,5 +1,11 @@
 function showContacts(str){
 	
+	if (typeof str === 'undefined'){
+    	
+		str = "";
+		
+	}
+	
 	if(window.XMLHttpRequest){
 
 		// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -20,7 +26,7 @@ function showContacts(str){
 		}
 	};
 
-	xmlhttp.open("GET","php/getcontact.php?p="+str,true);
+	xmlhttp.open("GET","php/getcontact.php?q="+str,true);
 	xmlhttp.send();
 
 }

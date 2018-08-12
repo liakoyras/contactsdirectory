@@ -23,39 +23,58 @@
 	$result = mysqli_query($connection, $query);
 	$contactnum = mysqli_num_rows($result);
 	
-	if(!($contactnum == 0)){
+	if($contactnum == 0){
 		
-		echo "<table>
-			<tr>
-			<th>Όνομα</th>
-			<th>Επώνυμο</th>
-			<th>Τηλέφωνο</th>
-			<th>Διεύθυνση</th>
-			<th>Email</th>
-			<th>Επεξεργασία</th>
-			</tr>";
-		
-			while($row = mysqli_fetch_array($result)){
-				
-				$contactid = $row["ID"];
-				
-				echo "<tr>";
-				echo "<td>" . $row['FIRSTNAME'] . "</td>";
-				echo "<td>" . $row['LASTNAME'] . "</td>";
-				echo "<td>" . $row['PHONE'] . "</td>";
-				echo "<td>" . $row['ADDRESS'] . "</td>";
-				echo "<td>" . $row['EMAIL'] . "</td>";
-				echo "<td> <a id='editor' onClick='confirmDelete(".$contactid.")'>Διαγραφή</a> <a id='editor' href='php/edit.php?contactid=".$contactid."'>Επεξεργασία</a> </td>";
-				echo "</tr>";
-				
-			}
-		
-			echo "</table>";
+		$response = "<p class='center'>Δεν έχετε καταχωρήσει καμία επαφή.</p>";	
 		
 	}else{
 		
-		echo "<p class='center'>Δεν έχετε καταχωρήσει καμία επαφή.</p>";	
+		$q = $_GET["q"];
+		$contactresult = "";
+		
+		if(strlen($q) == 0){
+			
+			$contactresult = "<table>";
+			
+			while($row = mysqli_fetch_array($result)){
+				
+					$contactid = $row["ID"];
+
+					$contact = "<tr>" .
+					"<td>" . $row['FIRSTNAME'] . "</td>" .
+					"<td>" . $row['LASTNAME'] . "</td>" .
+					"<td>" . $row['PHONE'] . "</td>" .
+					"<td>" . $row['ADDRESS'] . "</td>" .
+					"<td>" . $row['EMAIL'] . "</td>" .
+					"<td> <a id='editor' onClick='confirmDelete(".$contactid.")'>Διαγραφή</a> <a id='editor' href='php/edit.php?contactid=".$contactid."'>Επεξεργασία</a> </td>" .
+					"</tr>";
+					
+					$contactresult = $contactresult . $contact;
+					
+				}
+			
+			$contactresult = $contactresult . "</table>";
+						
+			
+		}else{
+			
+			$contactresult = "ΟΥΑΟΥ";
+			
+		}
+		
+		if($contactresult == ""){
+			
+			$response = "Δεν βρέθηκαν επαφές που ταιριάζουν στην αναζήτησή σας.";			
+			
+		}else{
+			
+			$response = $contactresult;
+			
+		}
 		
 	}
+		
+
+	echo $response;
 
 ?>

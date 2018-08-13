@@ -37,6 +37,10 @@
 			
 			echo "<script>alert('Συνδεθήκατε με επιτυχία!');window.location.href='../catalogue.php';</script>";
 			
+		}else{
+			
+			echo "<script>alert('Λάθος όνομα χρήστη ή κωδικός!');</script>";
+			
 		}
 		
 	}

@@ -1,4 +1,5 @@
 <?php
+	session_start();
 
     if(isset($_POST["login"])){
         
@@ -14,7 +15,7 @@
         $dbname = "db_57337";
         
         $connection = mysqli_connect($servername, $username, $password, $dbname);
-        if (!$connection){
+        if(!$connection){
 			die("Προέκυψε κάποιο σφάλμα." . mysqli_connect_error() . "Παρακαλούμε επικοινωνήστε μαζί μας.");
 		}
 		
@@ -22,21 +23,22 @@
 		
         $check = "SELECT `userID` FROM `users` WHERE `username` = '$login'";
 		
-		$result = mysqli_query($connection, $check);
+		$checkresult = mysqli_query($connection, $check);
 		
 		
-		if($result->num_rows == 0){
+		if(mysqli_num_rows($checkresult) == 0){
 			
-			$query = "INSERT INTO `users` (`username`, `password`, `email`, `firstname`, `lastname`)   VALUES ('$login', '$pass', '$email', '$fname', '$lname')";
+			$query = "INSERT INTO `users` (`username`, `password`, `email`, `firstname`, `lastname`) VALUES ('$login', '$pass', '$email', '$fname', '$lname')";
 
 			if (mysqli_query($connection, $query)){
 				
-				session_start();
 				$_SESSION["authorized"] = 1;
 				$_SESSION["username"] = "$login";
-
+				
+				$result = mysqli_query($connection, "SELECT `userID` FROM `users` WHERE `username` = '$login'");
 				$row = mysqli_fetch_array($result);
 				$_SESSION["ID"] = $row["userID"];
+				
 				echo "<script>alert('Η εγγραφή σας ήταν επιτυχής!');window.location.href='../catalogue.php';</script>";
 				
 			}else{
@@ -45,13 +47,13 @@
 			}
 			
 		}else{
-				
+			
 			mysqli_close($connection);
 			echo "<script>
 				alert('Το όνομα χρήστη που επιλέξατε χρησιμοποιείται ήδη, επιλέξτε κάποιο άλλο.');
 				window.history.go(-1);
 			</script>";
-		
+			
 		}
     
 	}

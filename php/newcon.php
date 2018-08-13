@@ -21,9 +21,9 @@
 			die("Προέκυψε κάποιο σφάλμα." . mysqli_connect_error() . "Παρακαλούμε επικοινωνήστε μαζί μας.");
 		}
 		
-        mysqli_set_charset($connection,"utf8");
+        mysqli_set_charset($connection, "utf8");
 		
-		$query = "INSERT INTO `catalogue` (`FIRSTNAME`, `LASTNAME`, `PHONE`, `ADDRESS`, `EMAIL`, `USERID`)   VALUES ('$fname', '$lname', '$tel', '$address', '$email', '$userid')";
+		$query = "INSERT INTO `catalogue` (`FIRSTNAME`, `LASTNAME`, `PHONE`, `ADDRESS`, `EMAIL`, `USERID`) VALUES ('$fname', '$lname', '$tel', '$address', '$email', '$userid')";
 		
 		if (mysqli_query($connection, $query)){
 			

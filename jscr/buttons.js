@@ -1,6 +1,6 @@
 /*Responsive Hamburger Menu*/
 
-function hamburger() {
+function hamburger(){
     var x = document.getElementById("myTopnav");
     if (x.className === "navbar") {
         x.className += " responsive";
@@ -9,9 +9,29 @@ function hamburger() {
     }
 }
 
+/*Show Password*/
+
+function showPassword(){
+	
+    var x = document.getElementById("passfield");
+	var y = document.getElementById("reppassfield");
+    if(x.type === "password"){
+		
+        x.type = "text";
+		y.type = "text";
+		
+    }else{
+		
+        x.type = "password";
+		y.type = "password";
+		
+    }
+	
+}
+
 /*Other functions/buttons*/
 
-function home() {
+function home(){
 	
     location.href = '../index.php'; 
 	

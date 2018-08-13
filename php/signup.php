@@ -35,10 +35,10 @@
 				$_SESSION["authorized"] = 1;
 				$_SESSION["username"] = "$login";
 
-				$row = $result->fetch_assoc();
+				$row = mysqli_fetch_array($result);
 				$_SESSION["ID"] = $row["userID"];
 				echo "<script>alert('Η εγγραφή σας ήταν επιτυχής!');window.location.href='../catalogue.php';</script>";
-					
+				
 			}else{
 				
 				echo "Σφάλμα:<br>" . mysqli_error($connection) . "<br>Παρακαλούμε επικοινωνήστε μαζί μας.";
@@ -95,14 +95,16 @@
 			<div class="fcontainer">
 				
 				<h1>Φορμα Εγγραφής</h1>
-				<p>Συμπληρώστε την παρακάτω φορμα και πατήστε στο κουμπί Εγγραφή για να εγγραφείτε και να χρησιμοποιήσετε την υπηρεσία μας. Το όνομα χρήστη πρέπει να περιέχει μόνο λατινικούς χαρακτήρες και αριθμούς. Εάν κάνετε κάποιο λάθος, μπορείτε να πατήσετε στο κουμπί Αναίρεση.<br>Τα πεδία σημειωμένα με * είναι υποχρεωτικά. <br>Έχετε ήδη λογαριασμό χρήστη; <a href="login.php">Συνδεθείτε</a></p>
+				<p>Συμπληρώστε την παρακάτω φορμα και πατήστε στο κουμπί Εγγραφή για να εγγραφείτε και να χρησιμοποιήσετε την υπηρεσία μας. Το όνομα χρήστη πρέπει να περιέχει μόνο λατινικούς χαρακτήρες και αριθμούς. Εάν κάνετε κάποιο λάθος, μπορείτε να πατήσετε στο κουμπί Αναίρεση.<br>Τα πεδία σημειωμένα με * είναι υποχρεωτικά. <br>Έχετε ήδη λογαριασμό χρήστη; <a href="login.php">Συνδεθείτε</a>
+				</p>
 				<hr>
 				<label for="login"><b>Όνομα Χρήστη *</b></label>
 				<input type="text" name="login" required><br>
 				<label for="password"><b>Κωδικός *</b></label>
-				<input type="password" name="password" required><br>
+				<input type="password" id="passfield" name="password" required><br>
 				<label for="passrep"><b>Επανάληψη Κωδικού *</b></label>
-				<input type="password" name="passrep" required><br>
+				<input type="password" id="reppassfield" name="passrep" required>
+				<input name="showpass" type="checkbox" onClick ="showPassword()"><b>Εμφάνιση Κωδικού</b><br>
 				<label for="email"><b>Email *</b></label>
 				<input type="text" name="email" required><br>
 				<label for="fname"><b>Όνομα</b></label>

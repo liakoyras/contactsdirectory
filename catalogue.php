@@ -1,4 +1,15 @@
-<!DOCTYPE html>
+<?php 
+	
+	session_start();
+	
+	if($_SESSION["authorized"] != 1){
+		
+		header('Location: false.php');
+		
+	}
+
+?>
+
 <html>
 
 	<head>

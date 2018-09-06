@@ -58,7 +58,7 @@
 			
 		}else{
 			
-			$searchq = "SELECT * FROM `catalogue` WHERE FIRSTNAME LIKE '%".$q."%'";
+			$searchq = "SELECT * FROM `catalogue` WHERE (FIRSTNAME LIKE '%".$q."%' OR LASTNAME LIKE '%".$q."%') AND USERID='$userid'";
 			$sresult = mysqli_query($connection, $searchq);
 			
 			if(mysqli_num_rows($sresult) > 0){

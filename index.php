@@ -126,7 +126,7 @@
 		
 		<div class="footer">
     	
-	    	<br>Copyright © 2018-2019 · Ilias Chanis
+	    	<br>Designed and Developed by Ilias Chanis 2018-2019
 	    	
 		</div>
 		

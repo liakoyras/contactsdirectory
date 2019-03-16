@@ -15,7 +15,7 @@
         
         $connection = mysqli_connect($servername, $username, $password, $dbname);
         if (!$connection){
-			die("Προέκυψε κάποιο σφάλμα." . mysqli_connect_error() . "Παρακαλούμε επικοινωνήστε μαζί μας.");
+			die("<p id='connerror'>An error has occured.<br>Please contact us.<br>Error code: </p>". mysqli_error($connection));
 		}
         
         
@@ -35,11 +35,11 @@
 			
 			mysqli_close($connection);
 			
-			echo "<script>alert('Συνδεθήκατε με επιτυχία!');window.location.href='../catalogue.php';</script>";
+			echo "<script>window.location.href='../catalogue.php';</script>";
 			
 		}else{
 			
-			echo "<script>alert('Λάθος όνομα χρήστη ή κωδικός!');</script>";
+			echo "<script>alert('Wrong user name or password!');</script>";
 			
 		}
 		
@@ -60,7 +60,7 @@
 		<meta name="author" content="Ilias Chanis">
 		<meta name="last modified" content="18 Jul 2018">
 		
-		<title>Σύνδεση</title>
+		<title>Log in</title>
 		<link rel="icon" href="favicon.ico">
 		
 		<link rel="stylesheet" type="text/css" href="../css/global.css">
@@ -76,29 +76,31 @@
    
     <body>
     
-		<button class="back_button" onclick="home()">&larr;  Πίσω</button>
+		<button id="backbutton" class="back_button" onclick="home()">&larr;  Back</button>
 	
 		<form accept-charset="utf-8" action="" method="POST">
 
 			<div class="fcontainer">
 				
-				<h1>Σύνδεση</h1>
-				<p>Συμπληρώστε την παρακάτω φορμα για να συνδεθείτε.<br>Δεν έχετε λογαριασμό χρήστη; <a href="signup.php">Κάντε Εγγραφή</a></p>
+				<h1 id="lformtitle">Log in</h1>
+				<p id="lformcontents">Fill the following form to log in.<br>Don't have a user account? <a href='signup.php'>Sign up</a></p>
 				<hr>
-				<label for="login"><b>Όνομα Χρήστη</b></label>
+				<label for="login"><b id="lusername">User Name</b></label>
 				<input type="text" name="login" required><br>
-				<label for="password"><b>Κωδικός</b></label>
+				<label for="password"><b id="lpass">Password</b></label>
 				<input type="password" name="password" required><br>
 				
 				<div class="clearfloat">
 				
-					<button type="submit">Σύνδεση</button>
+					<button id="lformsubmit" type="submit">Log in</button>
 					
 				</div>
 							
 			</div>
 			
 		</form>
+		
+		<script src="../jscr/translate.js"></script>
 		
 	</body>
 	

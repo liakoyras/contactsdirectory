@@ -10,7 +10,7 @@
 		<meta name="author" content="Ilias Chanis">
 		<meta name="last modified" content="29 Jan 2018">
 		
-		<title>Eπικοινωνία</title>
+		<title>Contact Us</title>
 		<link rel="icon" href="favicon.ico">
 		
 		<link rel="stylesheet" type="text/css" href="css/global.css">
@@ -49,26 +49,32 @@
 		
 		<div class="navbar" id="myTopnav">
 	    	
-			<a href="index.php">Αρχική</a>
-			<a href="php/chooser.php">Κατάλογος</a>
-			<a class="active"  href="contact.php">Επικοινωνία</a>
+			<a id="navhome" href="index.php">Home</a>
+			<a id="navcat" href="php/chooser.php">Directory</a>
+			<a id="navcont" class="active" href="contact.php">Contact us</a>
 			<a href="javascript:void(0);" class="icon" onclick="hamburger()">
-   				<i class="fa fa-bars"></i>
+   				<i id="hamburger" class="fa fa-bars"></i>
   			</a>
   			
   			<div id ="right" >
-
+  			
+				<div class="pull-right" style="margin-left: 5px;" onClick="return translateEN()" >
+					<a href="" onClick="return false;"><img style="height: 11px;" src="img/UK.png"></a>
+            	</div>
+           		<div class="pull-right" style="margin-left: 15px;" onClick="return translateGR()">
+                	<a href="" onClick="return false;"><img style="height: 12.5px;" src="img/Greece.png"></a>
+            	</div>
+            	
 				<?php 
 						error_reporting(0);
 						session_start();
 						if($_SESSION["authorized"] == 1){
 							
-							echo "Γεια σου " . $_SESSION["username"] . "&nbsp;<a href='php/logout.php'>Αποσύνδεση</a>";
+							echo "<p style='all: unset; font-family: 'Roboto', sans-serif;' id='navhi'>Hello </p>" . $_SESSION["username"] . "&nbsp;<a href='php/logout.php'><p style='all: unset; font-family: 'Roboto', sans-serif;' id='navlogout'>Log out</p></a>";
 							
 						}else{
 							
-							echo "&nbsp;<a href='php/login.php'>Σύνδεση</a>";
-							
+							echo "&nbsp;<a href='php/login.php'><i class='fa' style='padding: 0;'>&#xf007;&nbsp;&nbsp;</i><p style='all: unset; font-family: 'Roboto', sans-serif;' id='navlogin'>Log in</p></a>";
 							
 						}
 						
@@ -77,14 +83,14 @@
 			</div>
   			
 	    </div>
-
 		
-		<h3 class="center">Υπεύθυνος Επικοινωνίας</h3>
-		<p class="center">Ηλίας Χανής <br>
-		Τηλέφωνο: 6987084405<br>
-		
-		<a href="mailto:iliashanis@gmail.com?Subject=Υπηρεσία%20Καταλόγου" target="_blank"><i style="color: black; font-size: 30px;" class="fa">&#xf0e0;</i></a> Στείλτε μας email<br>
-		<a href="https://www.facebook.com/ilias.hanis" target="_blank" class="fa fa-facebook"><br></a> Βρείτε μας στο Facebook<br><br></p>
+		<h3 id="responsible" class="center">Contact Person</h3>
+		<p id="contactinfo" class="center">
+			Ilias Chanis<br><br>
+			Tel. 1234567890<br>
+		  <a href='mailto:iliashanis@gmail.com?Subject=Contact%20Directory' target='_blank'><i style='color: black; font-size: 30px;' class='fa'>&#xf0e0;</i></a> Send us an email<br>
+			<a href='https://www.facebook.com/' target='_blank' class='fa fa-facebook'><br></a> Find us on Facebook<br><br>
+		</p>
 			
 		
 		<div class="footer">
@@ -92,6 +98,8 @@
 	    	<br>Copyright © 2018 · Ilias Chanis
 	    	
 		</div>
+		
+		<script src="jscr/translate.js"></script>
 		
 	</body>
 	

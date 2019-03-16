@@ -10,7 +10,7 @@
 	$connection = mysqli_connect($servername, $username, $password, $dbname);
 	if(!$connection){
 		
-		die("Προέκυψε κάποιο σφάλμα. " . mysqli_connect_error() . " Παρακαλούμε επικοινωνήστε μαζί μας.");
+		die("<p id='connerror'>An error has occured.<br>Please contact us.<br>Error code: </p>". mysqli_error($connection));
 		
 	}
 	

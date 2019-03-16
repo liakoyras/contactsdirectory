@@ -21,7 +21,7 @@
 		<meta name="author" content="Ilias Chanis">
 		<meta name="last modified" content="19 Jul 2018">
 		
-		<title>Κατάλογος</title>
+		<title>Directory</title>
 		<link rel="icon" href="favicon.ico">
 		
 		<link rel="stylesheet" type="text/css" href="css/global.css">
@@ -40,30 +40,28 @@
 	
 	<body>
 
-	    <div class="navbar" id="myTopnav">
-	    	
-			<a href="index.php">Αρχική</a>
-			<a class="active" href="php/chooser.php">Κατάλογος</a>
-			<a href="contact.php">Επικοινωνία</a>
-			<a href="javascript:void(0);" class="icon" onclick="hamburger()">
-   				<i id="hamburger" class="fa fa-bars"></i>
-  			</a>
+	    <div class="navbar" id="myTopnav"><a id="navhome" href="index.php">Home</a> <a id="navcat" class="active" href="php/chooser.php">Directory</a> <a id="navcont" href="contact.php">Contact us</a> <a href="javascript:void(0);" class="icon" onClick="hamburger()"> <em id="hamburger" class="fa fa-bars"></em> </a>
+	      <div id ="right" >
   			
-  			<div id ="right" >
-
-				<?php
-				
-					error_reporting(0);
-					session_start();
-					if($_SESSION["authorized"] == 1){
+				<div class="pull-right" style="margin-left: 5px;margin-top: 6px;" onClick="return translateEN()" >
+					<a href="" onClick="return false;"><img style="height: 11px;" src="img/UK.png"></a>
+            	</div>
+           		<div class="pull-right" style="margin-left: 15px;margin-top: 6px;" onClick="return translateGR()">
+                	<a href="" onClick="return false;"><img style="height: 12.5px;" src="img/Greece.png"></a>
+            	</div>
+            	
+				<?php 
+						error_reporting(0);
+						session_start();
+						if($_SESSION["authorized"] == 1){
 							
-						echo "Γεια σου " . $_SESSION["username"] . "&nbsp;<a href='php/logout.php'>Αποσύνδεση</a>";
+							echo "<p style='all: unset; font-family: 'Roboto', sans-serif;' id='navhi'>Hello </p>" . $_SESSION["username"] . "&nbsp;<a href='php/logout.php'><p style='all: unset; font-family: 'Roboto', sans-serif;' id='navlogout'>Log out</p></a>";
 							
-					}else{
+						}else{
 							
-						echo "&nbsp;<a href='php/login.php'><i class='fa'>&#xf007;&nbsp;&nbsp;</i>Σύνδεση</a>";
-						
-					}
+							echo "&nbsp;<a href='php/login.php'><i class='fa'>&#xf007;&nbsp;&nbsp;</i><p style='all: unset; font-family: 'Roboto', sans-serif;' id='navlogin'>Log in</p></a>";
+							
+						}
 						
 				?>
 					
@@ -73,12 +71,12 @@
 		
 		<section id="main">
 			
-			<h1 class="center">Αυτή είναι η σελίδα του καταλόγου σας.</h1>
-			<h3 class="center">Εδώ μπορείτε δείτε και να αναζητήσετε τις επαφές σας, καθώς και να προσθέσετε, να τροποποιήσετε ή να διαγράψετε μια επαφή.<br></h3>
+			<h1 id="cataloguehead" class="center">This is your Directory page.</h1>
+			<h3 id="cataloguebody" class="center">Here, you can view your contacts and search for, edit and delete them.<br><br></h3>
 			
-			<p class="center"><a href="php/newcon.php">Δημιουργία Επαφής</a></p>
+			<p class="center"><a id="newbutton" href="php/newcon.php">Create New Contact</a></p>
 			
-			<h3 class="center">Πληκτρολογήστε το όνομα ή το επώνυμο της επαφής που θέλετε να αναζητήσετε.</h3>
+			<h3 id="searchprompt" class="center">Type the first or last name of the contact you want to search for.</h3>
 			
 			<form>
 			
@@ -99,6 +97,8 @@
 	    	<br>Copyright © 2018 · Ilias Chanis · All Rights Reserved
 	    	
 		</div>
+		
+		<script src="jscr/translate.js"></script>
 		
 	</body>
 	

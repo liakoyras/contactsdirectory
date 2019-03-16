@@ -10,7 +10,7 @@
 		<meta name="author" content="Ilias Chanis">
 		<meta name="last modified" content="16 Jul 2018">
 		
-		<title>Κατάλογος</title>
+		<title>Ooops...</title>
 		<link rel="icon" href="favicon.ico">
 		
 		<link rel="stylesheet" type="text/css" href="css/global.css">
@@ -27,45 +27,43 @@
 	
 	<body>
 
-	    <div class="navbar" id="myTopnav">
-	    	
-			<a href="index.php">Αρχική</a>
-			<a class="active" href="php/chooser.php">Κατάλογος</a>
-			<a href="contact.php">Επικοινωνία</a>
-			<a href="javascript:void(0);" class="icon" onclick="hamburger()">
-   				<i id="hamburger" class="fa fa-bars"></i>
-  			</a>
+	    <div class="navbar" id="myTopnav"><a id="navhome" href="index.php">Home</a> <a id="navcat" href="php/chooser.php">Directory</a> <a id="navcont" href="contact.php">Contact us</a> <a href="javascript:void(0);" class="icon" onClick="hamburger()"> <em id="hamburger" class="fa fa-bars"></em> </a>
+	      <div id ="right" >
   			
-  			<div id ="right" >
-
+				<div class="pull-right" style="margin-left: 5px;" onClick="return translateEN()" >
+					<a href="" onClick="return false;"><img style="height: 11px;" src="img/UK.png"></a>
+           		</div>
+           		<div class="pull-right" style="margin-left: 15px;" onClick="return translateGR()">
+                	<a href="" onClick="return false;"><img style="height: 12.5px;" src="img/Greece.png"></a>
+            	</div>
+            	
 				<?php 
 						error_reporting(0);
 						session_start();
 						if($_SESSION["authorized"] == 1){
 							
-							echo "Γεια σου " . $_SESSION["username"] . "&nbsp;<a href='php/logout.php'>Αποσύνδεση</a>";
+							echo "<p style='all: unset; font-family: 'Roboto', sans-serif;' id='navhi'>Hello </p>" . $_SESSION["username"] . "&nbsp;<a href='php/logout.php'><p style='all: unset; font-family: 'Roboto', sans-serif;' id='navlogout'>Log out</p></a>";
 							
 						}else{
 							
-							echo "&nbsp;<a href='php/login.php'><i class='fa'>&#xf007;&nbsp;&nbsp;</i>Σύνδεση</a>";
+							echo "&nbsp;<a href='php/login.php'><i class='fa'>&#xf007;&nbsp;&nbsp;</i><p style='all: unset; font-family: 'Roboto', sans-serif;' id='navlogin'>Log in</p></a>";
 							
 						}
 						
 				?>
+				
 					
-			</div>
+		  </div>
   			
 	    </div>
 		
 		<section id="main">
 		
-			<h1 class="center">Λυπούμαστε :(</h1>
+			<h1 id="sorry" class="center">We are sorry :(</h1>
 			
-			<h3 class="center"><br>Για να έχετε πρόσβαση στην υπηρεσία καταλόγου, πρέπει να συνδεθείτε.</h3>
+			<h3 id="falsehelp" class="center"><br>In order to gain access, please log in.</h3>
 
-			<p class="center">Εαν δεν έχετε λογαριασμό χρήστη, για να εγγραφείτε πατήστε <a href="php/signup.php">εδώ</a>.<br>Για να συνδεθείτε και να δείτε τις επαφές σας, πατήστε <a href="php/login.php">εδώ</a>.</p>
-			
-			<p class="center">Για να δείτε περισσσότερες πληροφορίες για την υπηρεσία που παρέχουμε, πατήστε <a href="index.php#main">εδώ</a>.</p>
+			<p id="bottomhelp" class="center">In order to access the service you must log in.<br><br>If you don't have a user account, you can sign up <a href='php/signup.php'>here</a>.<br>You can log in and view your contacts, <a href='php/login.php'>here</a>.</p>
 		
 		</section>
 		
@@ -74,6 +72,8 @@
 	    	<br>Copyright © 2018 · Ilias Chanis
 	    	
 		</div>
+		
+		<script src="jscr/translate.js"></script>
 		
 	</body>
 	

@@ -10,7 +10,7 @@
 	$connection = mysqli_connect($servername, $username, $password, $dbname);
 	if(!$connection){
 		
-		die("Προέκυψε κάποιο σφάλμα. " . mysqli_connect_error() . " Παρακαλούμε επικοινωνήστε μαζί μας.");
+		die("<p id='connerror'>An error has occured.<br>Please contact us.<br>Error code: </p>". mysqli_error($connection));
 		
 	}
 
@@ -25,11 +25,12 @@
 	
 	if($contactnum == 0){
 		
-		$response = "<p class='center'>Δεν έχετε καταχωρήσει καμία επαφή.</p>";	
+		$response = "<p id='nocontacts' class='center'>You have not created any contacts.</p>";	
 		
 	}else{
 		
 		$q = $_GET["q"];
+		
 		$contactresult = "";
 		
 		if(strlen($q) == 0){
@@ -46,7 +47,7 @@
 					"<td>" . $row['PHONE'] . "</td>" .
 					"<td>" . $row['ADDRESS'] . "</td>" .
 					"<td>" . $row['EMAIL'] . "</td>" .
-					"<td> <a id='editor' onClick='confirmDelete(".$contactid.")'>Διαγραφή</a> <a id='editor' href='php/edit.php?contactid=".$contactid."'>Επεξεργασία</a> </td>" .
+					"<td> <a id='editor1' onClick='confirmDelete(".$contactid.")'>Delete</a> <a id='editor2' href='php/edit.php?contactid=".$contactid."'>Edit</a> </td>" .
 					"</tr>";
 					
 					$contactresult = $contactresult . $contact;
@@ -75,7 +76,7 @@
 					"<td>" . $row['PHONE'] . "</td>" .
 					"<td>" . $row['ADDRESS'] . "</td>" .
 					"<td>" . $row['EMAIL'] . "</td>" .
-					"<td> <a id='editor' onClick='confirmDelete(".$contactid.")'>Διαγραφή</a> <a id='editor' href='php/edit.php?contactid=".$contactid."'>Επεξεργασία</a> </td>" .
+					"<td> <a id='editor1' onClick='confirmDelete(".$contactid.")'>Delete</a> <a id='editor2' href='php/edit.php?contactid=".$contactid."'>Edit</a> </td>" .
 					"</tr>";
 					
 					$contactresult = $contactresult . $contact;
@@ -90,7 +91,7 @@
 		
 		if($contactresult == ""){
 			
-			$response = "Δεν βρέθηκαν επαφές που ταιριάζουν στην αναζήτησή σας.";			
+			$response = "<p id='notfound'>No contacts match your search.</p>";			
 			
 		}else{
 			

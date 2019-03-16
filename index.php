@@ -10,7 +10,7 @@
 		<meta name="author" content="Ilias Chanis">
 		<meta name="last modified" content="16 Jul 2018">
 		
-		<title>Αρχική</title>
+		<title>Home</title>
 		<link rel="icon" href="favicon.ico">
 		
 		<link rel="stylesheet" type="text/css" href="css/global.css">
@@ -20,8 +20,7 @@
 		
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arvo">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto">
 		
 		<script src="jscr/buttons.js"></script>
 		
@@ -33,35 +32,34 @@
 		
 			<div class="hero-text">
 			
-				<h1>Υπηρεσία Καταλόγου</h1>
-				<h4 style="font-size:20px"><a onClick="scrollHome()">Δείτε περισσότερα για την υπηρεσία μας!</a></h4>ή<br>
-				<a id="but" href="php/getstarted.php">Ξεκινήστε</a>
+				<h1 id="herotext">Contacts Directory Service</h1>
+				<h4 style="font-size:20px"><a id="herolink" onClick="scrollHome()">See more about the service!</a></h4><p id="or">or</p><br>
+				<a id="but" href="php/getstarted.php">Get Started</a>
 				
 			</div>
 			
 		</div>
 		
-	    <div class="navbar" id="myTopnav">
-	    	
-			<a class="active" href="#main">Αρχική</a>
-			<a href="php/chooser.php">Κατάλογος</a>
-			<a href="contact.php">Επικοινωνία</a>
-			<a href="javascript:void(0);" class="icon" onclick="hamburger()">
-   				<i id="hamburger" class="fa fa-bars"></i>
-  			</a>
+	    <div class="navbar" id="myTopnav"><a id="navhome" class="active" href="#main">Home</a> <a id="navcat" href="php/chooser.php">Directory</a> <a id="navcont" href="contact.php">Contact us</a> <a href="javascript:void(0);" class="icon" onClick="hamburger()"> <em id="hamburger" class="fa fa-bars"></em> </a>
+	      <div id ="right" >
   			
-  			<div id ="right" >
-
+				<div class="pull-right" style="margin-left: 5px;" onClick="return translateEN()" >
+					<a href="" onClick="return false;"><img style="height: 11px;" src="img/UK.png"></a>
+            	</div>
+           		<div class="pull-right" style="margin-left: 15px;" onClick="return translateGR()">
+                	<a href="" onClick="return false;"><img style="height: 12.5px;" src="img/Greece.png"></a>
+            	</div>
+            	
 				<?php 
 						error_reporting(0);
 						session_start();
 						if($_SESSION["authorized"] == 1){
 							
-							echo "Γεια σου " . $_SESSION["username"] . "&nbsp;<a href='php/logout.php'>Αποσύνδεση</a>";
+							echo "<p style='all: unset; font-family: 'Roboto', sans-serif;' id='navhi'>Hello </p>" . $_SESSION["username"] . "&nbsp;<a href='php/logout.php'><p style='all: unset; font-family: 'Roboto', sans-serif;' id='navlogout'>Log out</p></a>";
 							
 						}else{
 							
-							echo "&nbsp;<a href='php/login.php'><i class='fa'>&#xf007;&nbsp;&nbsp;</i>Σύνδεση</a>";
+							echo "&nbsp;<a href='php/login.php'><i class='fa'>&#xf007;&nbsp;&nbsp;</i><p style='all: unset; font-family: 'Roboto', sans-serif;' id='navlogin'>Log in</p></a>";
 							
 						}
 						
@@ -72,68 +70,68 @@
 	    </div>
 	    
 		
-		
 		<section id="main">
 		
-			<h1 class="center">Καλώς ήρθατε!</h1>
+			<h1 id="welcome" class="center">Welcome!</h1>
 			
 			<div class="col-container">
 							
 				<div class="col">
 
 					<i class="fa">&#xf0c7;</i>
-					<p>Απεριόριστος αποθηκευτικός χώρος</p>
+					<p id="storage">Unlimited Storage Space</p>
 
 				</div>
 
 				<div class="col">
 
 					<i class="fa">&#xf2be;</i>
-					<p>Φιλικό προς τον χρήστη</p>
+					<p id="friendly">User Friendly</p>
 
 				</div>
 
 				<div class="col">
 
 					<i class="fa">&#xf108;</i>
-					<p>Άριστη Τεχνική Υποστήριξη</p>
+					<p id="support">Excellent Support</p>
 
 				</div>
 				
 			</div>
 			
-			<h3 class="center"><br>Περισσότερες πληροφορίες για την υπηρεσία καταλόγου που παρέχεται μπορείτε να βρείτε παρακάτω.</h3>
-			<button class="collapsible">Η υπηρεσία</button>
+			<h3 id="moreinfo" class="center"><br>Do you have a question?</h3>
+			<button id="colservice"class="collapsible">What;</button>
 			<div class="content">
 
-				<p>Παρέχουμε υπηρεσίες Καταλόγου Επαφών στους εγγεγραμμένους χρήστες.<br>Ο κάθε χρήστης έχει την δυνατότητα να:<br>
+				<p id="services">This website offers Contact Directory services.<br>Each user has the ability to:<br>
 				<ul>
-					<li>Καταχωρήσει επαφές</li>
-					<li>Επεξεργαστεί ή διαγράψει τις υπάρχουσες</li>
-					<li>Πραγματοποιήσει αναζήτηση στις επαφές του</li>
+					<li id="slist1">Create Contacts</li>
+					<li id="slist2">Update or delete existing contacts</li>
+					<li id="slist3">Perform a search in existing contacts</li>
 				</ul>
 				</p>
 
 			</div>
 
-			<button class="collapsible">Οδηγίες Χρήσης</button>
+			<button id="colinstructions" class="collapsible">How?</button>
 			<div class="content">
 
-				<p>Για να χρησιμοποιήσετε την υπηρεσία καταλόγου, είναι απαραίτητο να έχετε λογαριασμό χρήστη (μπορείτε να εγγραφείτε και από <a href="php/signup.php">εδώ</a>) και να είστε συνδεδεμένοι.<br>Κατόπιν, από το σύνδεσμο "Κατάλογος" στο μενού, αποκτάτε πρόσβαση σε όλες τις δυνατότητες που περιγράφονται παραπάνω. Μπορείτε να χρησιμοποιήσετε τους αντίστοιχους συνδέσμους για τη δημιουργία ή επεξεργασία επαφών και μπορείτε να γράψετε στη μπάρα αναζήτησης το όνομα ή το επώνυμο της επαφής που ψάχνετε.</p>
+				<p id="instructions">In order to use the service, you must be logged in to your user account (you can register <a href='php/signup.php'>here</a>).<br>From the 'Directory' option on the menu, you have access to every service described above.<br>You can use the buttons in order to create, edit or delete a contact and the search bar to search a contact's name.</p>
 
 			</div>
 
-			<p class="center">Για να έχετε πρόσβαση στην υπηρεσία καταλόγου πρέπει να συνδεθείτε. <br><br>Εαν δεν έχετε λογαριασμό χρήστη, για να εγγραφείτε πατήστε <a href="php/signup.php">εδώ</a>.<br>Για να συνδεθείτε και να δείτε τις επαφές σας, πατήστε <a href="php/login.php">εδώ</a>.</p>
+			<p id="bottomhelp" class="center">In order to access the service you must log in.<br><br>If you don't have a user account, you can sign up <a href='php/signup.php'>here</a>.<br>You can log in and view your contacts, <a href='php/login.php'>here</a>.</p>
 		
 		</section>
 		
 		<div class="footer">
     	
-	    	<br>Copyright © 2018 · Ilias Chanis
+	    	<br>Copyright © 2018-2019 · Ilias Chanis
 	    	
 		</div>
 		
 		<script src="jscr/collapsible.js"></script>
+		<script src="jscr/translate.js"></script>
 		
 	</body>
 	

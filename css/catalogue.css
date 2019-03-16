@@ -96,7 +96,7 @@ th {
 }
 */
 
-#main #editor {
+#main #editor1,  #main #editor2{
 	
 	margin: 0;
 	background: transparent;

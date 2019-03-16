@@ -5,7 +5,7 @@ body {
 	margin: 0;
 	height: 100%;
 	padding: 0; 	
-	font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 	line-height: 25px;
 	
@@ -14,14 +14,14 @@ body {
 h3 {
 	
 	float: none;
-	font-family: 'Arvo', Georgia, Times, serif;
+	font-family: 'Roboto', sans-serif;
 	font-size: 19px;
 	
 }
 
 h1 {
 
-	font-family: 'Arvo', Georgia, Times, serif;
+	font-family: 'Roboto', sans-serif;
 	padding: 25px;
 	
 }
@@ -58,7 +58,7 @@ p {
 	
     overflow: hidden;
     background-color: #903E6E;
-  	font-family: 'Arvo', Georgia, Times, serif;
+  	font-family: 'Roboto', sans-serif;
 	position: fixed;
     top: 0;
 	left: 0;

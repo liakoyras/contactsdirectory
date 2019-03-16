@@ -11,7 +11,7 @@
 	$connection = mysqli_connect($servername, $username, $password, $dbname);
 	if(!$connection){
 		
-		die("Προέκυψε κάποιο σφάλμα. " . mysqli_connect_error() . " Παρακαλούμε επικοινωνήστε μαζί μας.");
+		die("<p id='connerror'>An error has occured.<br>Please contact us.<br>Error code: </p>". mysqli_error($connection));
 		
 	}
 	
@@ -30,18 +30,17 @@
 		$address = trim($_POST["address"]);
 		$userid = $_SESSION["ID"];
 		
-
 		
 		$query = "UPDATE `catalogue` SET `FIRSTNAME` = '$fname', `LASTNAME` = '$lname', `PHONE` = '$tel', `ADDRESS` = '$address', `EMAIL` = '$email' WHERE ID='$contactid'";
 		
 		if (mysqli_query($connection, $query)){
 			
 			mysqli_close($connection);
-			echo "<script>alert('Οι αλλαγές αποθηκεύτηκαν επιτυχώς!');window.location.href='../catalogue.php';</script>";
+			echo "<script>window.location.href='../catalogue.php';</script>";
 			
 		}else{
 			
-			echo "Σφάλμα:<br>" . mysqli_error($connection) . "<br>Παρακαλούμε επικοινωνήστε μαζί μας.";
+			echo "<p id='connerror'>An error has occured.<br>Please contact us.<br>Error code: </p>". mysqli_error($connection);
 			
 		}
 		
@@ -61,7 +60,7 @@
 		<meta name="author" content="Ilias Chanis">
 		<meta name="last modified" content="18 Jul 2018">
 		
-		<title>Επεξεργασία Επαφής</title>
+		<title>Edit Contact</title>
 		<link rel="icon" href="favicon.ico">
 		
 		<link rel="stylesheet" type="text/css" href="../css/global.css">
@@ -78,37 +77,39 @@
    
     <body>
     
-		<button class="back_button" onclick="home()">&larr;  Πίσω</button>
+		<button id="backbutton" class="back_button" onclick="home()">&larr;  Back</button>
 	
 		<form accept-charset="utf-8" name="newcon" action="" onSubmit="return conVal()" method="POST">
 		
 			<div class="fcontainer">
 				
-				<h1>Επεξεργασία Επαφής</h1>
-				<p>Κάντε τις αλλαγές που επιθυμείτε και πατήστε στο κουμπί Αποθήκευση Αλλαγών για να αλλάξετε την επαφή σας. Εάν κάνετε κάποιο λάθος, μπορείτε να πατήσετε στο κουμπί Αναίρεση.<br>Τα πεδία σημειωμένα με * είναι υποχρεωτικά.</p>
+				<h1 id="edith">Edit Contact</h1>
+				<p id="editcon">Fill the form with the contact information you want to save and press Create Contact. If you make a mistake, press the Cancel button.<br>Fields marked with * are obligatory.</p>
 				<hr>
-				<label for="fame"><b>Όνομα *</b></label>
+				<label for="fame"><b id="cfname">First Name *</b></label>
 				<input type="text" name="fname" value="<?php echo $row['FIRSTNAME'];?>"required><br>
-				<label for="lname"><b>Επώνυμο</b></label>
+				<label for="lname"><b id="lastname">Last Name</b></label>
 				<input type="text" name="lname" value="<?php echo $row['LASTNAME'];?>"><br>
-				<label for="tel"><b>Τηλέφωνο *</b></label>
+				<label for="tel"><b id="ctel">Telephone *</b></label>
 				<input type="text" name="tel" value="<?php echo $row['PHONE'];?>"required><br>
 				<label for="email"><b>Email</b></label>
 				<input type="text" name="email" value="<?php echo $row['EMAIL'];?>"><br>
-				<label for="address"><b>Διεύθυνση</b></label>
+				<label for="address"><b id="conaddress">Address</b></label>
 				<input type="text" name="address" value="<?php echo $row['ADDRESS'];?>"><br>
 
 				
 				<div class="clearfloat">
 				
-					<button type="reset" class="clearbtn">Αναίρεση</button>
-					<button type="submit" class="signupbtn">Αποθήκευση Αλλαγών</button>
+					<button id="cancel" type="reset" class="clearbtn">Cancel</button>
+					<button id="savech" type="submit" class="signupbtn">Save Changes</button>
 					
 				</div>
 				
 			</div>
 			
 		</form>
+		
+		<script src="../jscr/translate.js"></script>
 		
 	</body>
 	

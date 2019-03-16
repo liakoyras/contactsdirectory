@@ -16,7 +16,7 @@
         
         $connection = mysqli_connect($servername, $username, $password, $dbname);
         if(!$connection){
-			die("Προέκυψε κάποιο σφάλμα." . mysqli_connect_error() . "Παρακαλούμε επικοινωνήστε μαζί μας.");
+			die("<p id='connerror'>An error has occured.<br>Please contact us.<br>Error code: </p>". mysqli_error($connection));
 		}
 		
         mysqli_set_charset($connection,"utf8");
@@ -39,20 +39,17 @@
 				$row = mysqli_fetch_array($result);
 				$_SESSION["ID"] = $row["userID"];
 				
-				echo "<script>alert('Η εγγραφή σας ήταν επιτυχής!');window.location.href='../catalogue.php';</script>";
+				echo "<script>window.location.href='../catalogue.php';</script>";
 				
 			}else{
 				
-				echo "Σφάλμα:<br>" . mysqli_error($connection) . "<br>Παρακαλούμε επικοινωνήστε μαζί μας.";
+				echo "<p id='connerror'>An error has occured.<br>Please contact us.<br>Error code: </p>". mysqli_error($connection);
 			}
 			
 		}else{
 			
 			mysqli_close($connection);
-			echo "<script>
-				alert('Το όνομα χρήστη που επιλέξατε χρησιμοποιείται ήδη, επιλέξτε κάποιο άλλο.');
-				window.history.go(-1);
-			</script>";
+			echo '<script>alert("This username is already in use. Please select another one."); window.history.go(-1);</script>';
 			
 		}
     
@@ -73,7 +70,7 @@
 		<meta name="author" content="Ilias Chanis">
 		<meta name="last modified" content="18 Jul 2018">
 		
-		<title>Φόρμα Εγγραφής</title>
+		<title>Sign up</title>
 		<link rel="icon" href="favicon.ico">
 		
 		<link rel="stylesheet" type="text/css" href="../css/global.css">
@@ -90,34 +87,34 @@
    
     <body>
     
-		<button class="back_button" onClick ="home()">&larr;  Πίσω</button>
+		<button id="backbutton" class="back_button" onClick ="home()">&larr;  Back</button>
 	
 		<form accept-charset="utf-8" name="signup" action="" onSubmit="return validation()" method="POST">
 		
 			<div class="fcontainer">
 				
-				<h1>Φορμα Εγγραφής</h1>
-				<p>Συμπληρώστε την παρακάτω φορμα και πατήστε στο κουμπί Εγγραφή για να εγγραφείτε και να χρησιμοποιήσετε την υπηρεσία μας. Το όνομα χρήστη πρέπει να περιέχει μόνο λατινικούς χαρακτήρες και αριθμούς. Εάν κάνετε κάποιο λάθος, μπορείτε να πατήσετε στο κουμπί Αναίρεση.<br>Τα πεδία σημειωμένα με * είναι υποχρεωτικά. <br>Έχετε ήδη λογαριασμό χρήστη; <a href="login.php">Συνδεθείτε</a>
+				<h1 id="sformtitle">Sign up</h1>
+				<p id="sformcontents">Fill in the following form and press 'Sign up' in order to register for our service.<br> Your user name must contain only alphanumeric characters. If you make a mistake, press the 'Cancel' button.<br>Fields marked with * are obligatory.<br>Do you have a user account? <a href='login.php'>Log in</a>
 				</p>
 				<hr>
-				<label for="login"><b>Όνομα Χρήστη *</b></label>
+				<label for="login"><b id="username">User Name *</b></label>
 				<input type="text" name="login" required><br>
-				<label for="password"><b>Κωδικός *</b></label>
+				<label for="password"><b id="pass">Password *</b></label>
 				<input type="password" id="passfield" name="password" required><br>
-				<label for="passrep"><b>Επανάληψη Κωδικού *</b></label>
+				<label for="passrep"><b id="passrepeat">Repeat Password *</b></label>
 				<input type="password" id="reppassfield" name="passrep" required>
-				<input name="showpass" type="checkbox" onClick ="showPassword()"><b>Εμφάνιση Κωδικού</b><br>
+				<input name="showpass" type="checkbox" onClick ="showPassword()"><b id="passshow">Show Password</b><br>
 				<label for="email"><b>Email *</b></label>
 				<input type="text" name="email" required><br>
-				<label for="fname"><b>Όνομα</b></label>
+				<label for="fname"><b id="firstname">First Name</b></label>
 				<input type="text" name="fname"><br>
-				<label for="lname"><b>Επώνυμο</b></label>
+				<label for="lname"><b id="lastname">Last Name</b></label>
 				<input type="text" name="lname"><br>
 				
 				<div class="clearfloat">
 				
-					<button type="reset" class="clearbtn">Αναίρεση</button>
-					<button type="submit" class="signupbtn">Εγγραφή</button>
+					<button id="cancel" type="reset" class="clearbtn">Cancel</button>
+					<button id="sformsubmit" type="submit" class="signupbtn">Sign up</button>
 					
 				</div>
 				
@@ -125,6 +122,8 @@
 			</div>
 			
 		</form>
+		
+		<script src="../jscr/translate.js"></script>
 		
 	</body>
 	

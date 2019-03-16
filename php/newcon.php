@@ -18,7 +18,7 @@
         
         $connection = mysqli_connect($servername, $username, $password, $dbname);
         if (!$connection){
-			die("Προέκυψε κάποιο σφάλμα." . mysqli_connect_error() . "Παρακαλούμε επικοινωνήστε μαζί μας.");
+			die("<p id='connerror'>An error has occured.<br>Please contact us.<br>Error code: </p>". mysqli_error($connection));
 		}
 		
         mysqli_set_charset($connection, "utf8");
@@ -28,11 +28,11 @@
 		if (mysqli_query($connection, $query)){
 			
 			mysqli_close($connection);
-			echo "<script>alert('Η επαφή αποθηκεύτηκε επιτυχώς!');window.location.href='../catalogue.php';</script>";
+			echo "<script>window.location.href='../catalogue.php';</script>";
 			
 		}else{
 			
-			echo "Σφάλμα:<br>" . mysqli_error($connection) . "<br>Παρακαλούμε επικοινωνήστε μαζί μας.";
+			echo "<p id='connerror'>An error has occured.<br>Please contact us.<br>Error code: </p>". mysqli_error($connection);
 			
 		}
 		
@@ -69,31 +69,31 @@
    
     <body>
     
-		<button class="back_button" onclick="home()">&larr;  Πίσω</button>
+		<button id="backbutton" class="back_button" onclick="home()">&larr;  Back</button>
 	
 		<form accept-charset="utf-8" name="newcon" action="" onSubmit="return conVal()" method="POST">
 		
 			<div class="fcontainer">
 				
-				<h1>Δημιουργία Νέας Επαφής</h1>
-				<p>Συμπληρώστε τα στοιχεία της επαφής που θέλετε να αποθηκεύσετε στην παρακάτω φορμα και πατήστε στο κουμπί Αποθήκευση για να την αποθηκεύσετε. Εάν κάνετε κάποιο λάθος, μπορείτε να πατήσετε στο κουμπί Αναίρεση.<br>Τα πεδία σημειωμένα με * είναι υποχρεωτικά.</p>
+				<h1 id="newcontacth">Create New Contact</h1>
+				<p id="newcontactcon">Fill the form with the contact information you want to save and press Create Contact. If you make a mistake, press the Cancel button.<br>Fields marked with * are obligatory.</p>
 				<hr>
-				<label for="fame"><b>Όνομα *</b></label>
+				<label for="fame"><b id="cfname">First Name *</b></label>
 				<input type="text" name="fname" required><br>
-				<label for="lname"><b>Επώνυμο</b></label>
+				<label for="lname"><b id="lastname">Last Name</b></label>
 				<input type="text" name="lname"><br>
-				<label for="tel"><b>Τηλέφωνο *</b></label>
+				<label for="tel"><b id="ctel">Telephone *</b></label>
 				<input type="text" name="tel" required><br>
 				<label for="email"><b>Email</b></label>
 				<input type="text" name="email"><br>
-				<label for="address"><b>Διεύθυνση</b></label>
+				<label for="address"><b id="conaddress">Address</b></label>
 				<input type="text" name="address"><br>
 
 				
 				<div class="clearfloat">
 				
-					<button type="reset" class="clearbtn">Αναίρεση</button>
-					<button type="submit" class="signupbtn">Αποθήκευση</button>
+					<button id="cancel" type="reset" class="clearbtn">Cancel</button>
+					<button id="create" type="submit" class="signupbtn">Create Contact</button>
 					
 				</div>
 				
@@ -101,6 +101,8 @@
 			</div>
 			
 		</form>
+		
+		<script src="../jscr/translate.js"></script>
 		
 	</body>
 	

@@ -28,6 +28,7 @@ h1 {
 p {
 
 	font-size: 16px;
+	padding: 10px;
 	
 }
 
@@ -153,7 +154,6 @@ p {
 }
 
 /* Page Footer */
-
 .footer {
 	
 	padding-top: 5px;
@@ -167,13 +167,89 @@ p {
 }
 
 /*Responsive Navbar*/
+@media screen and (max-width: 775px) {
+	
+	.navbar a {
+
+		padding: 11px 13px;
+		font-size: 15px;
+		position: none;
+		
+	}
+
+	.navbar #right {
+
+		padding: 11px 13px;
+		font-size: 15px;
+		position: none;
+
+	}
+	
+	.navbar #right a  {
+
+		font-size: 15px;
+
+	}
+	
+}
+
+@media screen and (max-width: 690px) {
+	
+	.navbar a {
+
+		padding: 10px;
+		font-size: 14px;
+		position: none;
+		
+	}
+
+	.navbar #right {
+
+		padding: 10px;
+		font-size: 13px;
+		position: none;
+
+	}
+	.navbar #right a  {
+
+		font-size: 13px;
+
+	}
+	
+}
+
+@media screen and (max-width: 620px) {
+	
+	.navbar a {
+
+		padding: 8px;
+		font-size: 14px;
+		position: none;
+		
+	}
+
+	.navbar #right {
+
+		padding: 8px;
+		font-size: 13px;
+		position: none;
+
+	}
+	.navbar #right a  {
+
+		font-size: 13px;
+
+	}
+	
+}
+
 @media screen and (max-width: 600px) {
 	
 	.navbar a {
 
 		float: none;
 		padding: 11px 13px;
-		font-size: 15px;
+		font-size: 13px;
 		position: none;
 		
 	}

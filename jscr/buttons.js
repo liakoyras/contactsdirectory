@@ -1,5 +1,4 @@
 /*Responsive Hamburger Menu*/
-
 function hamburger(){
     var x = document.getElementById("myTopnav");
     if (x.className === "navbar") {
@@ -10,7 +9,6 @@ function hamburger(){
 }
 
 /*Show Password*/
-
 function showPassword(){
 	
     var x = document.getElementById("passfield");

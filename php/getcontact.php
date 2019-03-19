@@ -35,7 +35,14 @@
 				$query->execute(['userid' => $userid]);
 				$result = $query->fetchAll(PDO::FETCH_ASSOC);
 
-				$contactresult = "<table>";
+				$contactresult = "<table><tr>" .
+					"<th id='tabfname'>First Name</th>" .
+					"<th id='tablname'>Last Name</th>" .
+					"<th id='tabtel'>Telephone</th>" .
+					"<th id='tabaddr'>Address</th>" .
+					"<th id='tabemail'>Email</th>" .
+					"<th id='tabmod'>Modify</th>" .
+					"</tr>";
 
 				foreach ($result as $index=>$row) {
 					$contactid = $row["ID"];
@@ -66,7 +73,14 @@
 
 				if($result){
 
-					$contactresult = "<table>";
+					$contactresult = "<table><tr>" .
+						"<th id='tabfname'>First Name</th>" .
+						"<th id='tablname'>Last Name</th>" .
+						"<th id='tabtel'>Telephone</th>" .
+						"<th id='tabaddr'>Address</th>" .
+						"<th id='tabemail'>Email</th>" .
+						"<th id='tabmod'>Modify</th>" .
+						"</tr>";
 
 					foreach ($result as $index=>$row) {
 						$contactid = $row["ID"];

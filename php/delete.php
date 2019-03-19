@@ -1,23 +1,40 @@
 <?php
 	
+	session_start();
+	$userid = $_SESSION["ID"];
 	$contactid = $_GET["contactid"];
 
-	$servername = "localhost"; //do not change to dalab.ee.duth.gr (!)
-	$username = "57337";
-	$password = "lostre123";
-	$dbname = "db_57337";
+	include_once 'connect.php';
 
-	$connection = mysqli_connect($servername, $username, $password, $dbname);
-	if(!$connection){
+	try{
+		$dbconnect = new Connection();
+		$db = $dbconnect->openConnection();
+	}catch(PDOException $error){
+		echo "<p id='connerror'>A connection error has occured.<br>Please contact us.<br>Error code: </p>" . $error->getMessage();
+		$dbconnect->closeConnection();
+	}
+
+	try{
+		$checkq = $db->prepare("SELECT `USERID` FROM `catalogue` WHERE `ID`=:contactid");
+		$checkq->execute(['contactid' => $contactid]);
+		$check = $checkq->fetchColumn();
+
+		if($check != $userid) {
+			header('Location: ../catalogue.php');
+		}
+		else{
+			$query = $db->prepare("DELETE FROM `catalogue` WHERE ID=:contactid");
+			$query->execute(['contactid' => $contactid]);
 		
-		die("<p id='connerror'>An error has occured.<br>Please contact us.<br>Error code: </p>". mysqli_error($connection));
-		
+			$dbconnect->closeConnection();			
+		}
+	}catch(PDOException $error){
+		echo "<p id='dberror'>A database error has occured.<br>Please contact us.<br>Error code: </p>" . $error->getMessage();
+		$dbconnect->closeConnection();
 	}
 	
-	$query = "DELETE FROM `catalogue` WHERE ID='$contactid'";
-	
-	mysqli_query($connection, $query);
-	
+	$dbconnect->closeConnection();
+
 	header('Location: ../catalogue.php');
 	
 ?>

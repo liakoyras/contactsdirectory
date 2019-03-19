@@ -86,7 +86,10 @@ function translateEN(){
 	
 	/* Signup */
 	setText("backbutton", "←  Back");
-	setText("connerror", "<p id='connerror'>An error has occured.<br>Please contact us.<br>Error code: </p>");
+	
+	setText("connerror", "A connection error has occured.<br>Please contact us.<br>Error code: ");
+	setText("dberror", "An error in the database has occured.<br>Please contact us.<br>Error code: ");
+
 	setText("sformtitle", "Sign up");
 	setText("sformcontents", "Fill in the following form and press Sign up in order to register for our service.<br> Your user name must contain only alphanumeric characters. If you make a mistake, press the Cancel button.<br>Fields marked with * are obligatory.<br>Do you have a user account? <a href='login.php'>Log in</a>");
 	setText("username", "User Name *");
@@ -174,7 +177,10 @@ function translateGR(){
 	
 	/* Signup */
 	setText("backbutton", "←  Πίσω");
-	setText("connerror", "<p id='connerror'>Υπήρξε κάποιο σφάλμα.<br>Παρακαλούμε επικοινωνήστε μαζί μας.<br>Κωδικός σφάλματος: </p>");
+	
+	setText("connerror", "Υπήρξε κάποιο σφάλμα στη σύνδεση.<br>Παρακαλούμε επικοινωνήστε μαζί μας.<br>Κωδικός σφάλματος: ");
+	setText("dberror", "Υπήρξε κάποιο σφάλμα στη βάση δεδομένων.<br>Παρακαλούμε επικοινωνήστε μαζί μας.<br>Κωδικός σφάλματος: ");
+
 	setText("sformtitle", "Εγγραφή");
 	setText("sformcontents", "Συμπληρώστε την παρακάτω φορμα και πατήστε στο κουμπί Εγγραφή για να εγγραφείτε και να χρησιμοποιήσετε την υπηρεσία μας.<br>Το όνομα χρήστη πρέπει να περιέχει μόνο λατινικούς χαρακτήρες και αριθμούς. Εάν κάνετε κάποιο λάθος, μπορείτε να πατήσετε στο κουμπί Αναίρεση.<br>Τα πεδία σημειωμένα με * είναι υποχρεωτικά. <br>Έχετε ήδη λογαριασμό χρήστη; <a href='login.php'>Συνδεθείτε</a>");
 	setText("username", "Όνομα Χρήστη *");

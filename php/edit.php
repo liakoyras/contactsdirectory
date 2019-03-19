@@ -1,49 +1,48 @@
 <?php
 	
 	session_start();
-	
+	$userid = $_SESSION["ID"];
 	$contactid = $_GET["contactid"];
-	$servername = "localhost"; //do not change to dalab.ee.duth.gr (!)
-	$username = "57337";
-	$password = "lostre123";
-	$dbname = "db_57337";
 
-	$connection = mysqli_connect($servername, $username, $password, $dbname);
-	if(!$connection){
-		
-		die("<p id='connerror'>An error has occured.<br>Please contact us.<br>Error code: </p>". mysqli_error($connection));
-		
+	include_once 'connect.php';
+
+	try{
+		$dbconnect = new Connection();
+		$db = $dbconnect->openConnection();
+	}catch(PDOException $error){
+		echo "<p id='connerror'>A connection error has occured.<br>Please contact us.<br>Error code: </p>" . $error->getMessage();
+		$dbconnect->closeConnection();
 	}
 	
-	mysqli_query($connection, "SET NAMES 'utf8'");
+	try{
 
-	$query = "SELECT * FROM `catalogue` WHERE ID='$contactid'";
-	$result = mysqli_query($connection, $query);
-	$row = mysqli_fetch_array($result);
-	
-	if(isset($_POST["fname"])){
-        
-        $fname = trim($_POST["fname"]);
- 		$lname = trim($_POST["lname"]);
-		$tel = trim($_POST["tel"]);
-		$email = trim($_POST["email"]);
-		$address = trim($_POST["address"]);
-		$userid = $_SESSION["ID"];
-		
-		
-		$query = "UPDATE `catalogue` SET `FIRSTNAME` = '$fname', `LASTNAME` = '$lname', `PHONE` = '$tel', `ADDRESS` = '$address', `EMAIL` = '$email' WHERE ID='$contactid'";
-		
-		if (mysqli_query($connection, $query)){
+		$checkq = $db->prepare("SELECT `USERID` FROM `catalogue` WHERE `ID`=:contactid");
+		$checkq->execute(['contactid' => $contactid]);
+		$check = $checkq->fetchColumn();
+
+		if($check != $userid) echo "<script>window.location.href='../catalogue.php';</script>;";
+
+		$result = $db->prepare("SELECT * FROM `catalogue` WHERE `ID`=:contactid");
+		$result->execute(['contactid' => $contactid]);
+		$row = $result->fetch();
+
+		if(isset($_POST["fname"])){
+
+			$fname = trim($_POST["fname"]);
+			$lname = trim($_POST["lname"]);
+			$tel = trim($_POST["tel"]);
+			$email = trim($_POST["email"]);
+			$address = trim($_POST["address"]);
+			$userid = $_SESSION["ID"];
+
+			$updateq = $db->prepare("UPDATE `catalogue` SET `FIRSTNAME`=:fname, `LASTNAME`=:lname, `PHONE`=:tel', `ADDRESS`=:address, `EMAIL`=:email' WHERE ID=:contactid");
+			$updateq->execute(['fname' => $fname, 'lname' => $lname, 'tel' => $tel, 'address' => $address, 'email' => $email, 'contactid' => $contactid]);
 			
-			mysqli_close($connection);
-			echo "<script>window.location.href='../catalogue.php';</script>";
-			
-		}else{
-			
-			echo "<p id='connerror'>An error has occured.<br>Please contact us.<br>Error code: </p>". mysqli_error($connection);
-			
+			$dbconnect->closeConnection();
 		}
-		
+	}catch(PDOException $error){
+		echo "<p id='dberror'>A database error has occured.<br>Please contact us.<br>Error code: </p>" . $error->getMessage();
+		$dbconnect->closeConnection();
 	}
 
 

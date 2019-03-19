@@ -1,60 +1,57 @@
 <?php
-	session_start();
-
+	include_once 'connect.php';
+	
     if(isset($_POST["login"])){
-        
-        $login = trim($_POST["login"]);        
-        $pass = md5(trim($_POST["password"]));
-    	$email = trim($_POST["email"]);
+       
+		$login = trim($_POST["login"]);
+        $pass = trim($_POST["password"]);
+		$email = trim($_POST["email"]);
 		$fname = trim($_POST["fname"]);
-		$lname = trim($_POST["lname"]);		
-
-        $servername = "localhost"; //do not change to dalab.ee.duth.gr (!)
-        $username = "57337";
-        $password = "lostre123";
-        $dbname = "db_57337";
+		$lname = trim($_POST["email"]);
         
-        $connection = mysqli_connect($servername, $username, $password, $dbname);
-        if(!$connection){
-			die("<p id='connerror'>An error has occured.<br>Please contact us.<br>Error code: </p>". mysqli_error($connection));
+        $pass = md5($pass);
+		
+		
+		try{
+			$dbconnect = new Connection();
+			$db = $dbconnect->openConnection();
+		}catch(PDOException $error){
+			echo "<p id='connerror'>A connection error has occured.<br>Please contact us.<br>Error code: </p>" . $error->getMessage();
+			$dbconnect->closeConnection();
 		}
 		
-        mysqli_set_charset($connection,"utf8");
-		
-        $check = "SELECT `userID` FROM `users` WHERE `username` = '$login'";
-		
-		$checkresult = mysqli_query($connection, $check);
-		
-		
-		if(mysqli_num_rows($checkresult) == 0){
+		try{
+			$exists = $db->prepare("SELECT count(*) FROM `users` WHERE `username` = :login");
+			$exists->execute(['login' => $login]);
+			$count = $exists->fetchColumn();
 			
-			$query = "INSERT INTO `users` (`username`, `password`, `email`, `firstname`, `lastname`) VALUES ('$login', '$pass', '$email', '$fname', '$lname')";
-
-			if (mysqli_query($connection, $query)){
+			if($count){
+				echo '<script>alert("This username is already in use. Please select another one."); window.history.go(-1);</script>';
+			}else{
+				$insert = $db->prepare("INSERT INTO `users` (`username`, `password`, `email`, `firstname`, `lastname`) VALUES (:login, :pass, :email, :fname, :lname)");
 				
+				$insert->execute(['login' => $login, ':pass' => $pass, ':email' => $email, ':fname' => $fname, ':lname' => $lname]);
+								
+				session_start();
 				$_SESSION["authorized"] = 1;
 				$_SESSION["username"] = "$login";
+
 				
-				$result = mysqli_query($connection, "SELECT `userID` FROM `users` WHERE `username` = '$login'");
-				$row = mysqli_fetch_array($result);
-				$_SESSION["ID"] = $row["userID"];
+				$select = $db->prepare("SELECT `userID` FROM `users` WHERE `username` = :login");
+				$select->execute(['login' => $login]);
+				$id = $select->fetch();
 				
+				$_SESSION["ID"] = $id["userID"];
+				
+				$dbconnect->closeConnection();
 				echo "<script>window.location.href='../catalogue.php';</script>";
-				
-			}else{
-				
-				echo "<p id='connerror'>An error has occured.<br>Please contact us.<br>Error code: </p>". mysqli_error($connection);
 			}
-			
-		}else{
-			
-			mysqli_close($connection);
-			echo '<script>alert("This username is already in use. Please select another one."); window.history.go(-1);</script>';
-			
+
+		}catch(PDOException $error){
+			echo "<p id='dberror'>A database error has occured.<br>Please contact us.<br>Error code: </p>" . $error->getMessage();
 		}
     
 	}
-
 
 ?>
 

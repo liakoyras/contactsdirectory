@@ -1,7 +1,9 @@
 <?php
 
 	session_start();
-
+	
+	include_once 'connect.php';
+	
     if(isset($_POST["fname"])){
         
         $fname = trim($_POST["fname"]);
@@ -11,29 +13,22 @@
 		$address = trim($_POST["address"]);
 		$userid = $_SESSION["ID"];
 		
-        $servername = "localhost"; //do not change to dalab.ee.duth.gr (!)
-        $username = "57337";
-        $password = "lostre123";
-        $dbname = "db_57337";
-        
-        $connection = mysqli_connect($servername, $username, $password, $dbname);
-        if (!$connection){
-			die("<p id='connerror'>An error has occured.<br>Please contact us.<br>Error code: </p>". mysqli_error($connection));
+        try{
+			$dbconnect = new Connection();
+			$db = $dbconnect->openConnection();
+		}catch(PDOException $error){
+			echo "<p id='connerror'>A connection error has occured.<br>Please contact us.<br>Error code: </p>" . $error->getMessage();
+			$dbconnect->closeConnection();
 		}
 		
-        mysqli_set_charset($connection, "utf8");
-		
-		$query = "INSERT INTO `catalogue` (`FIRSTNAME`, `LASTNAME`, `PHONE`, `ADDRESS`, `EMAIL`, `USERID`) VALUES ('$fname', '$lname', '$tel', '$address', '$email', '$userid')";
-		
-		if (mysqli_query($connection, $query)){
-			
-			mysqli_close($connection);
+		try{
+			$insert = $db->prepare("INSERT INTO `catalogue` (`FIRSTNAME`, `LASTNAME`, `PHONE`, `ADDRESS`, `EMAIL`, `USERID`) VALUES (:fname, :lname, :tel, :address, :email, :userid)");
+				
+			$insert->execute([ ':fname' => $fname, ':lname' => $lname, ':tel' => $tel, ':address' => $address, ':email' => $email, 'userid' => $userid]);
+			$dbconnect->closeConnection();
 			echo "<script>window.location.href='../catalogue.php';</script>";
-			
-		}else{
-			
-			echo "<p id='connerror'>An error has occured.<br>Please contact us.<br>Error code: </p>". mysqli_error($connection);
-			
+		}catch(PDOException $error){
+			echo "<p id='dberror'>A database error has occured.<br>Please contact us.<br>Error code: </p>" . $error->getMessage();
 		}
 		
 	}

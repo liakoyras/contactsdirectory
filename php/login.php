@@ -1,50 +1,53 @@
 <?php
 
+	include_once 'connect.php';
+
     if(isset($_POST["login"])){
         
         $login = trim($_POST["login"]);
         $pass = trim($_POST["password"]);
         
         $pass = md5($pass);
-    
         
-        $servername = "localhost"; //do not change to dalab.ee.duth.gr (!)
-        $username = "57337";
-        $password = "lostre123";
-        $dbname = "db_57337";
-        
-        $connection = mysqli_connect($servername, $username, $password, $dbname);
-        if (!$connection){
-			die("<p id='connerror'>An error has occured.<br>Please contact us.<br>Error code: </p>". mysqli_error($connection));
+        try{
+			$dbconnect = new Connection();
+			$db = $dbconnect->openConnection();
+		}catch(PDOException $error){
+			echo "<p id='connerror'>A connection error has occured.<br>Please contact us.<br>Error code: </p>" . $error->getMessage();
+			$dbconnect->closeConnection();
 		}
         
-        
-        $query = "SELECT `userID` FROM `users` WHERE username='$login' AND password='$pass'";
-        
-        $result = mysqli_query($connection, $query);
-
-        if(mysqli_num_rows($result) == 1){
-            
-            
-            session_start();
-			$_SESSION["authorized"] = 1;
-			$_SESSION["username"] = "$login";
+        try{
+			$exists = $db->prepare("SELECT count(*) FROM `users` WHERE `username` = :login AND `password`=:pass");
+			$exists->execute(['login' => $login, 'pass' => $pass]);
+			$count = $exists->fetchColumn();
 			
-			$row = mysqli_fetch_array($result);
-			$_SESSION["ID"] = $row["userID"];
-			
-			mysqli_close($connection);
-			
-			echo "<script>window.location.href='../catalogue.php';</script>";
-			
-		}else{
-			
-			echo "<script>alert('Wrong user name or password!');</script>";
-			
-		}
+			if($count == 1){
+				session_start();
+				$_SESSION["authorized"] = 1;
+				$_SESSION["username"] = "$login";
+				
+				$id = $db->prepare("SELECT `userID` FROM `users` WHERE `username` = :login");
+				$id->execute(['login' => $login]);
+				$result = $id->fetch();
+				
+				$_SESSION["ID"] = $result["userID"];
+				
+				
+				echo "<script>window.location.href='../catalogue.php';</script>";
+				$dbconnect->closeConnection();
+			}elseif($count == 0){
+				$dbconnect->closeConnection();
+				echo "<script>alert('Wrong user name or password!');</script>";
+			}else{
+				$dbconnect->closeConnection();
+				echo "<script>alert('Please enter your credentials again.');</script>";
+			}
+		}catch(PDOException $error){
+			echo "<p id='dberror'>A database error has occured.<br>Please contact us.<br>Error code: </p>" . $error->getMessage();
+		}       
 		
 	}
-
 
 ?>
 

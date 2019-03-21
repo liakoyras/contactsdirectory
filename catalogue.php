@@ -90,14 +90,15 @@
 
 
 				</div>
-
+							
 			</section>
-
+			
 			<div id="footer">
 
-				<br>Designed and Developed by Ilias Chanis 2018-2019
+					<br>Designed and Developed by Ilias Chanis 2018-2019
 
 			</div>
+			
 		
 		</div>
 		

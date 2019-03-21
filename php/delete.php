@@ -20,7 +20,7 @@
 		$check = $checkq->fetchColumn();
 
 		if($check != $userid) {
-			header('Location: ../catalogue.php');
+			echo "<script>window.location.href='../catalogue.php';</script>;";
 		}
 		else{
 			$query = $db->prepare("DELETE FROM `catalogue` WHERE ID=:contactid");

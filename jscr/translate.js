@@ -91,8 +91,8 @@ function translateEN(){
 	setText("dberror", "An error in the database has occured.<br>Please contact us.<br>Error code: ");
 
 	setText("sformtitle", "Sign up");
-	setText("sformcontents", "Fill in the following form and press Sign up in order to register for our service.<br> Your user name must contain only alphanumeric characters. If you make a mistake, press the Cancel button.<br>Fields marked with * are obligatory.<br>Do you have a user account? <a href='login.php'>Log in</a>");
-	setText("username", "User Name *");
+	setText("sformcontents", "Fill in the following form and press Sign up in order to register for our service.<br> Your username must contain only alphanumeric characters. If you make a mistake, press the Cancel button.<br>Fields marked with * are obligatory.<br>Do you already have an account? <a href='login.php'>Log in</a>");
+	setText("username", "Username *");
 	setText("pass", "Password *");
 	setText("passrepeat", "Repeat Password *");
 	setText("passshow", "Show Password");
@@ -104,7 +104,7 @@ function translateEN(){
 	/* Login */
 	setText("lformtitle", "Log in");
 	setText("lformcontents", "Fill the following form to log in.<br>Don't have a user account? <a href='signup.php'>Sign up</a>");
-	setText("lusername", "User Name");
+	setText("lusername", "Username");
 	setText("lpass", "Password");
     setText("lformsubmit", "Log in");
 	
@@ -112,14 +112,13 @@ function translateEN(){
 	setText("newcontacth", "Create New Contact");
 	setText("newcontactcon", "Fill the form with the contact information you want to save and press Create Contact. If you make a mistake, press the Cancel button.<br>Fields marked with * are obligatory.");
 	setText("cfname", "First Name *");
-	setText("ctel", "Telephone *");
+	setText("ctel", "Telephone");
 	setText("conaddress", "Address");
 	setText("create", "Create Contact");
 	
 	setText("edith", "Edit Contact");
 	setText("editcon", "After you make any changes you want, click Save Changes to modify your contact. If you make a mistake, press the Cancel button.<br>Fields marked with * are obligatory.");
 	setText("savech", "Save Changes");
-	
 	
     createCookie('lang','ΕΝ');
 }
@@ -203,7 +202,7 @@ function translateGR(){
 	setText("newcontacth", "Δημιουργία Νέας Επαφής");
 	setText("newcontactcon", "Συμπληρώστε τα στοιχεία της επαφής που θέλετε να αποθηκεύσετε στην παρακάτω φορμα και πατήστε στο κουμπί Δημιουργία για να την αποθηκεύσετε. Εάν κάνετε κάποιο λάθος, μπορείτε να πατήσετε στο κουμπί Αναίρεση.<br>Τα πεδία σημειωμένα με * είναι υποχρεωτικά.");
 	setText("cfname", "Όνομα *");
-	setText("ctel", "Τηλέφωνο *");
+	setText("ctel", "Τηλέφωνο");
 	setText("conaddress", "Διεύθυνση");
 	setText("create", "Δημιουργία Επαφής");
 	

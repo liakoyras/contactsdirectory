@@ -3,14 +3,15 @@
 	session_start();
 	
 	include_once 'connect.php';
-	
+	include_once 'validation.php';
+
     if(isset($_POST["fname"])){
-        
-        $fname = trim($_POST["fname"]);
- 		$lname = trim($_POST["lname"]);
-		$tel = trim($_POST["tel"]);
-		$email = trim($_POST["email"]);
-		$address = trim($_POST["address"]);
+		
+		$fname = validateInput($_POST["fname"], "name");
+		$lname = validateInput($_POST["lname"], "name");
+		$tel = validateInput($_POST["tel"], "telephone");
+		$email = validateInput($_POST["email"], "email");
+		$address = validateInput($_POST["address"], "address");
 		$userid = $_SESSION["ID"];
 		
         try{
@@ -47,7 +48,7 @@
 		<meta name="author" content="Ilias Chanis">
 		<meta name="last modified" content="18 Jul 2018">
 		
-		<title>Νέα Επαφή</title>
+		<title>New Contact</title>
 		<link rel="icon" href="favicon.ico">
 		
 		<link rel="stylesheet" type="text/css" href="../css/global.css">
@@ -56,16 +57,15 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto">
 		
-		<script src="../jscr/buttons.js"></script>
-		<script src="../jscr/validation.js"></script>
+		
 		
 	</head>
    
     <body>
     
-		<button id="backbutton" class="back_button" onclick="home()">&larr;  Back</button>
+		<button id="backbutton" class="back_button" onclick="directory()">&larr;  Back</button>
 	
-		<form accept-charset="utf-8" name="newcon" action="" onSubmit="return conVal()" method="POST">
+		<form accept-charset="utf-8" name="contact" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" onSubmit="return validateContact()" method="POST">
 		
 			<div class="fcontainer">
 				
@@ -73,14 +73,19 @@
 				<p id="newcontactcon">Fill the form with the contact information you want to save and press Create Contact. If you make a mistake, press the Cancel button.<br>Fields marked with * are obligatory.</p>
 				<hr>
 				<label for="fame"><b id="cfname">First Name *</b></label>
-				<input type="text" name="fname" required><br>
+				<span id="fnameerror" class="error"></span>
+				<input type="text" name="fname"><br>
 				<label for="lname"><b id="lastname">Last Name</b></label>
+				<span id="lnameerror" class="error"></span>
 				<input type="text" name="lname"><br>
-				<label for="tel"><b id="ctel">Telephone *</b></label>
-				<input type="text" name="tel" required><br>
+				<label for="tel"><b id="ctel">Telephone</b></label>
+				<span id="telerror" class="error"></span>
+				<input type="text" name="tel"><br>
 				<label for="email"><b>Email</b></label>
+				<span id="mailerror" class="error"></span>
 				<input type="text" name="email"><br>
 				<label for="address"><b id="conaddress">Address</b></label>
+				<span id="addrerror" class="error"></span>
 				<input type="text" name="address"><br>
 
 				
@@ -91,12 +96,13 @@
 					
 				</div>
 				
-				
 			</div>
 			
 		</form>
 		
+		<script src="../jscr/buttons.js"></script>
 		<script src="../jscr/translate.js"></script>
+		<script src="../jscr/validation.js"></script>
 		
 	</body>
 	

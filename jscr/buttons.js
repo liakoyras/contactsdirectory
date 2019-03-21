@@ -35,6 +35,12 @@ function home(){
 	
 }
 
+function directory(){
+	
+    location.href = '../catalogue.php'; 
+	
+}
+
 function scrollHome(){
 	
 	var welcome = document.getElementById("main");

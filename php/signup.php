@@ -1,18 +1,16 @@
 <?php
 	include_once 'connect.php';
-	
+	include_once 'validation.php';
+
     if(isset($_POST["login"])){
        
-		$login = trim($_POST["login"]);
-        $pass = trim($_POST["password"]);
-		$email = trim($_POST["email"]);
-		$fname = trim($_POST["fname"]);
-		$lname = trim($_POST["email"]);
+		$login = validateInput($_POST["login"], "username");
+        $pass = validateInput($_POST["password"], "password");
+		$email = validateInput($_POST["email"], "email");
+		$fname = validateInput($_POST["fname"], "name");
+		$lname = validateInput($_POST["lname"], "name");
         
-        $pass = md5($pass);
-		
-		
-		try{
+ 		try{
 			$dbconnect = new Connection();
 			$db = $dbconnect->openConnection();
 		}catch(PDOException $error){
@@ -36,7 +34,6 @@
 				$_SESSION["authorized"] = 1;
 				$_SESSION["username"] = "$login";
 
-				
 				$select = $db->prepare("SELECT `userID` FROM `users` WHERE `username` = :login");
 				$select->execute(['login' => $login]);
 				$id = $select->fetch();
@@ -68,7 +65,7 @@
 		<meta name="last modified" content="18 Jul 2018">
 		
 		<title>Sign up</title>
-		<link rel="icon" href="favicon.ico">
+		<link rel="icon" href="../favicon.ico">
 		
 		<link rel="stylesheet" type="text/css" href="../css/global.css">
 		<link rel="stylesheet" type="text/css" href="../css/form.css">
@@ -76,32 +73,32 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto">
 		
-		<script src="../jscr/buttons.js"></script>
-		<script src="../jscr/validation.js"></script>
-		
 	</head>
    
     <body>
     
 		<button id="backbutton" class="back_button" onClick ="home()">&larr;  Back</button>
 	
-		<form accept-charset="utf-8" name="signup" action="" onSubmit="return validation()" method="POST">
+		<form accept-charset="utf-8" name="signup" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" onSubmit="return validateUser()" method="POST">
 		
 			<div class="fcontainer">
 				
 				<h1 id="sformtitle">Sign up</h1>
-				<p id="sformcontents">Fill in the following form and press 'Sign up' in order to register for our service.<br> Your user name must contain only alphanumeric characters. If you make a mistake, press the 'Cancel' button.<br>Fields marked with * are obligatory.<br>Do you have a user account? <a href='login.php'>Log in</a>
+				<p id="sformcontents">Fill in the following form and press 'Sign up' in order to register for our service.<br> Your username must contain only alphanumeric characters. If you make a mistake, press the 'Cancel' button.<br>Fields marked with * are obligatory.<br>Do you already have an account? <a href='login.php'>Log in</a>
 				</p>
 				<hr>
-				<label for="login"><b id="username">User Name *</b></label>
-				<input type="text" name="login" required><br>
+				<label for="login"><b id="username">Username *</b></label>
+				<span id="unerror" class="error"></span>
+				<input type="text" name="login"><br>
 				<label for="password"><b id="pass">Password *</b></label>
-				<input type="password" id="passfield" name="password" required><br>
+				<span id="passerror" class="error"></span>
+				<input type="password" id="passfield" name="password" ><br>
 				<label for="passrep"><b id="passrepeat">Repeat Password *</b></label>
-				<input type="password" id="reppassfield" name="passrep" required>
+				<input type="password" id="reppassfield" name="passrep">
 				<input name="showpass" type="checkbox" onClick ="showPassword()"><b id="passshow">Show Password</b><br>
 				<label for="email"><b>Email *</b></label>
-				<input type="text" name="email" required><br>
+				<span id="mailerror" class="error"></span>
+				<input type="text" name="email"><br>
 				<label for="fname"><b id="firstname">First Name</b></label>
 				<input type="text" name="fname"><br>
 				<label for="lname"><b id="lastname">Last Name</b></label>
@@ -119,7 +116,9 @@
 			
 		</form>
 		
+		<script src="../jscr/buttons.js"></script>
 		<script src="../jscr/translate.js"></script>
+		<script src="../jscr/validation.js"></script>
 		
 	</body>
 	

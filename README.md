@@ -1,10 +1,10 @@
 # contactsdirectory
-This repository contains a website I created for a school project.
+This repository contains a website I created for a school project.<br>
 The goal was to build a website where the user is able to create an account and save contacts.
 
 ## Disclaimer:
-Although you can use the code, keep in mind that this is by no means a professional work that can be considered safe.
-While I have indeed taken some steps to ensure the security of the website, it can still contain code that it is not considered good practice.
+Although you can use the code, keep in mind that this is by no means a professional work that can be considered safe.<br>
+While I have done my best, it can still contain code that it is not considered good practice and/or bugs and security hazards.<br>
 I do not have any responsibility for the use of this code. 
 
 ## Language

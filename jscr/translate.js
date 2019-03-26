@@ -123,6 +123,11 @@ function translateEN(){
 	setText("editcon", "After you make any changes you want, click Save Changes to modify your contact. If you make a mistake, press the Cancel button.<br>Fields marked with * are obligatory.");
 	setText("savech", "Save Changes");
 	
+	/* Delete User */
+	setText("warning", "Warning! This action cannot be undone.");
+	setText("question", "<br>Are you sure you want to delete your acount and all contacts assosciated with it?");
+	setText("passprompt", "To confirm the action, please enter your password in the field below and press enter.");
+	
     createCookie('lang','ΕΝ');
 }
                     
@@ -216,6 +221,10 @@ function translateGR(){
 	setText("editcon", "Κάντε τις αλλαγές που επιθυμείτε και πατήστε στο κουμπί Αποθήκευση Αλλαγών για να τροποποιήσετε την επαφή σας. Εάν κάνετε κάποιο λάθος, μπορείτε να πατήσετε στο κουμπί Αναίρεση.<br>Τα πεδία σημειωμένα με * είναι υποχρεωτικά.");
 	setText("savech", "Αποθήκευση Αλλαγών");
 	
+	/* Delete User */
+	setText("warning", "Προσοχή! Αυτή η ενέργεια δεν μπορεί να αναιρεθεί.");
+	setText("question", "<br>Θέλετε σίγουρα να διαγράψετε τον λογαριασμό σας και όλες τις επαφές που έχετε αποθηκεύσει;");
+	setText("passprompt", "Για επιβεβαίωση, εισάγετε τον κωδικό σας στο παρακάτω πεδίο και πατήστε enter.");
 	
     createCookie('lang','GR');
 }

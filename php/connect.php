@@ -1,7 +1,7 @@
 <?php
 Class Connection {
 	
-	private  $server = "mysql:host=localhost;dbname=contactdirectory;charset=utf8";
+	private $server = "mysql:host=localhost;dbname=contactdirectory;charset=utf8";
 	private $user = "admin";
 	private $pass = "password";
 	private $options  = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, PDO::ATTR_EMULATE_PREPARES, false);

@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <?php
-	
 	session_start();
+
+	if($_SESSION["authorized"] != 1){
+		
+		header('Location: ../false.php');
+		
+	}
+
 	$userid = $_SESSION["ID"];
 
 	include_once 'connect.php';
@@ -29,11 +35,12 @@
 				session_destroy();
 				$query = $db->prepare("DELETE FROM `users` WHERE `userID`=:id");
 				$query->execute(['id' => $userid]);
-		
-				$dbconnect->closeConnection();			
+				
+				$query = $db->prepare("DELETE FROM `catalogue` WHERE `USERID`=:id");
+				$query->execute(['id' => $userid]);		
 	
-				echo "<script>window.location.href='../index.php';</script>";
 				$dbconnect->closeConnection();
+				echo "<script>window.location.href='../index.php';</script>";
 			}else{
 				$dbconnect->closeConnection();
 				echo "<script>alert('Wrong Password!');</script>";

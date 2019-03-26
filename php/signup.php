@@ -25,7 +25,8 @@
 			$count = $exists->fetchColumn();
 			
 			if($count){
-				echo '<script>alert("This username is already in use. Please select another one."); window.history.go(-1);</script>';
+				echo "<script src='../jscr/translate.js'></script>";
+				echo "<script>if(getCookie('lang')){if (getCookie('lang') == 'GR'){prompt = 'Το όνομα χρήστη χρησιμοποιείται ήδη. Παρακαλούμε επιλέξτε κάποιο άλλο.';}else{prompt = 'This username is already in use. Please select another one.';}}else{prompt = 'This username is already in use. Please select another one.';}alert(prompt);window.history.go(-1);</script>";
 			}else{
 				$insert = $db->prepare("INSERT INTO `users` (`username`, `password`, `email`, `firstname`, `lastname`) VALUES (:login, :pass, :email, :fname, :lname)");
 				

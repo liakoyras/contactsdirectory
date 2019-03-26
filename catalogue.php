@@ -9,7 +9,7 @@
 	}
 
 ?>
-<!DOCTYPE html>
+
 <html>
 
 	<head>
@@ -32,9 +32,7 @@
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto">
 		
-		<script src="jscr/buttons.js"></script>
-		<script src="jscr/ajaxtable.js"></script>
-		<script src="jscr/confirmation.js"></script>
+		
 		
 	</head>
 	
@@ -110,7 +108,10 @@
 		
 		</div>
 		
+		<script src="jscr/buttons.js"></script>
+		<script src="jscr/ajaxtable.js"></script>
 		<script src="jscr/translate.js"></script>
+		<script src="jscr/confirmation.js"></script>
 		
 	</body>
 	

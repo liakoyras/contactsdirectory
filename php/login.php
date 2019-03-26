@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 
 	include_once 'connect.php';
@@ -33,15 +32,16 @@
 				
 				$_SESSION["ID"] = $result["userID"];
 				
-				
-				echo "<script>window.location.href='../catalogue.php';</script>";
 				$dbconnect->closeConnection();
+				echo "<script>window.location.href='../catalogue.php';</script>";
 			}elseif($count == 0){
 				$dbconnect->closeConnection();
-				echo "<script>alert('Wrong user name or password!');</script>";
+				echo "<script src='../jscr/translate.js'></script>";
+				echo "<script>var prompt;if(getCookie('lang')){if (getCookie('lang') == 'GR'){prompt = 'Λάθος όνομα χρήστη ή κωδικός.';}else{prompt = 'Wrong username or password.';} }else{prompt = 'Wrong username or password.';}alert(prompt);</script>";
 			}else{
 				$dbconnect->closeConnection();
-				echo "<script>alert('Please enter your credentials again.');</script>";
+				echo "<script src='../jscr/translate.js'></script>";
+				echo "<script>if(getCookie('lang')){if (getCookie('lang') == 'GR'){prompt = 'Παρακαλούμε εισάγετε και πάλι τα στοιχεία σας.';}else{prompt = 'Please insert your credentials again.';}}else{prompt = 'Please insert your credentials again.';}alert(prompt);</script>";
 			}
 		}catch(PDOException $error){
 			echo "<p id='dberror'>A database error has occured.<br>Please contact us.<br>Error code: </p>" . $error->getMessage();
@@ -70,6 +70,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/form.css">
 		
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto">
 		
 	</head>

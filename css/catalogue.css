@@ -1,7 +1,7 @@
 #main {
 	
 	margin-top: 55px; /*margin equal to navbars height*/
-	padding-bottom: 50px;
+	padding-bottom: 20px;
 	
 }
 
@@ -51,6 +51,25 @@ input[type=text]:focus {
 	
 }
 
+#footer #deleteacc a{
+    font-size: 13px;
+	margin: 0;
+	background: transparent;
+    color: black;
+    text-align: center;
+    padding: 0;
+    text-decoration: underline;
+	cursor: pointer;
+}
+
+#footer #deleteacc a:hover{
+
+	transition: 0.4s;
+	text-decoration: underline;
+	
+}
+
+
 #footer {
 
     position: absolute;
@@ -62,7 +81,7 @@ input[type=text]:focus {
     text-align: center;
 	font-family: 'Roboto', sans-serif;
 	font-size: 12px;
-	height: 50px;
+	height: 20px;
 
 }
 

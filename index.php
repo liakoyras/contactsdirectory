@@ -40,7 +40,11 @@
 			
 		</div>
 		
-	    <div class="navbar" id="myTopnav"><a id="navhome" class="active" href="#main">Home</a> <a id="navcat" href="php/chooser.php">Directory</a> <a id="navcont" href="contact.php">Contact us</a> <a href="javascript:void(0);" class="icon" onClick="hamburger()"> <em id="hamburger" class="fa fa-bars"></em> </a>
+	    <div class="navbar" id="myTopnav">
+		  <a id="navhome" class="active" href="#main">Home</a>
+		  <a id="navcat" href="php/chooser.php">Directory</a>
+		  <a id="navcont" href="contact.php">Contact us</a>
+		  <a href="javascript:void(0);" class="icon" onClick="hamburger()"><em id="hamburger" class="fa fa-bars"></em></a>
 	      <div id ="right" >
   			
 				<div class="pull-right" style="margin-left: 5px;" onClick="return translateEN()" >

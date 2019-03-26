@@ -22,6 +22,7 @@ h1 {
 
 	font-family: 'Roboto', sans-serif;
 	padding: 25px;
+	line-height: 1em;
 	
 }
 
@@ -84,7 +85,7 @@ p {
 	  
 	background-color: #ddd;
     color: black;
- 
+	
 }
 
 .navbar a.active {

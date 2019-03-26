@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 
 	include_once 'connect.php';
@@ -5,7 +6,7 @@
 
     if(isset($_POST["username"])){
         
-        $login = validateInput($_POST["login"], "username");
+        $login = validateInput($_POST["username"], "username");
         $pass = validateInput($_POST["password"], "password");
         
         try{

@@ -109,6 +109,7 @@ function validateEmail(){
 	return true;
 }
 
+
 function validateUser(){
 	
 	var flag1 = validateUsername();
@@ -117,8 +118,6 @@ function validateUser(){
 	
     return(flag1 && flag2 && flag3);
 }
-
-
 
 function validateLogin(){
 	var userName = document.login.username;
@@ -146,6 +145,18 @@ function validateLogin(){
 	return (flag1 && flag2);
 }
 
+function validateDelete(){
+	var thePass = document.delete.password;
+	
+	if(thePass.value.length < 8){
+		thePass.classList.add("invalid");
+		document.activeElement.blur();
+		return false;
+	}else{
+		thePass.classList.remove("invalid");
+	}
+	return true;
+}
 
 
 function validateContactFName(){

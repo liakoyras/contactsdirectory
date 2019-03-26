@@ -21,7 +21,6 @@
 					$input = substr($input,0,20);
 					preg_replace("/[^a-zA-Z0-9]+/", "", $input);
 				}
-				echo $input;
 				break;
 			case "password":
 				preprocess($input);

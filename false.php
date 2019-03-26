@@ -20,14 +20,16 @@
 		
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto">
 		
-		<script src="jscr/buttons.js"></script>
-		
 	</head>
 	
 	<body>
 
-	    <div class="navbar" id="myTopnav"><a id="navhome" href="index.php">Home</a> <a id="navcat" href="php/chooser.php">Directory</a> <a id="navcont" href="contact.php">Contact us</a> <a href="javascript:void(0);" class="icon" onClick="hamburger()"> <em id="hamburger" class="fa fa-bars"></em> </a>
-	      <div id ="right" >
+		<div class="navbar" id="myTopnav">
+     		<a id="navhome" href="index.php">Home</a>
+			<a id="navcat" href="php/chooser.php">Directory</a>
+			<a id="navcont" href="contact.php">Contact us</a>
+			<a href="javascript:void(0);" class="icon" onClick="hamburger()"><em id="hamburger" class="fa fa-bars"></em></a>
+	      	<div id ="right" >
   			
 				<div class="pull-right" style="margin-left: 5px;" onClick="return translateEN()" >
 					<a href="" onClick="return false;"><img style="height: 11px;" src="img/UK.png"></a>
@@ -72,6 +74,7 @@
 	    	
 		</div>
 		
+		<script src="jscr/buttons.js"></script>
 		<script src="jscr/translate.js"></script>
 		
 	</body>

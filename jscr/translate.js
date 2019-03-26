@@ -75,10 +75,13 @@ function translateEN(){
 	setText("cataloguebody", "Here, you can view your contacts and search for, edit and delete them.<br>");
 	setText("newbutton", "Create New Contact");
 	setText("searchprompt", "Type the first or last name of the contact you want to search for.");
+	
 	setText("nocontacts", "You have not created any contacts.");
 	setText("editor1", "Delete");
 	setText("editor2", "Edit");
 	setText("notfound", "No contacts match your search.");
+	
+	setText("catquestion", "Do you want to delete your account?");
 
 	/* Contact us */
 	setText("responsible", "Contact Person");
@@ -169,6 +172,9 @@ function translateGR(){
 	setText("editor1", "Διαγραφή");
 	setText("editor2", "Επεξεργασία");
 	setText("notfound", "Δεν βρέθηκαν επαφές που ταιριάζουν στην αναζήτησή σας.");
+	
+	setText("catquestion", "Θέλετε να διαγράψετε το λογαριασμό σας;");
+	
 	
 	/* Contact Us */
 	setText("responsible", "Υπεύθυνος επικοινωνίας");

@@ -9,7 +9,7 @@
 	}
 
 ?>
-
+<!DOCTYPE html>
 <html>
 
 	<head>
@@ -40,11 +40,14 @@
 	
 	<body>
 		<div id="container">
-		
-			<div class="navbar" id="myTopnav"><a id="navhome" href="index.php">Home</a> <a id="navcat" class="active" href="php/chooser.php">Directory</a> <a id="navcont" href="contact.php">Contact us</a> <a href="javascript:void(0);" class="icon" onClick="hamburger()"> <em id="hamburger" class="fa fa-bars"></em> </a>
-			  <div id ="right" >
+			<div class="navbar" id="myTopnav">
+			 	<a id="navhome" href="index.php">Home</a>
+			 	<a id="navcat" class="active" href="php/chooser.php">Directory</a>
+				<a id="navcont" href="contact.php">Contact us</a>
+				<a href="javascript:void(0);" class="icon" onClick="hamburger()"><em id="hamburger" class="fa fa-bars"></em></a>
+			  	<div id ="right" >
 
-					<div class="pull-right" style="margin-left: 5px;margin-top: 6px;" onClick="return translateEN()" >
+						<div class="pull-right" style="margin-left: 5px;margin-top: 6px;" onClick="return translateEN()" >
 						<a href="" onClick="return false;"><img style="height: 11px;" src="img/UK.png"></a>
 					</div>
 					<div class="pull-right" style="margin-left: 15px;margin-top: 6px;" onClick="return translateGR()">
@@ -87,15 +90,21 @@
 
 				<div id="contactTable">
 
-
+	
 
 				</div>
-							
-			</section>
+									
+			</section>	
+			
+			
 			
 			<div id="footer">
-
-					<br>Designed and Developed by Ilias Chanis 2018-2019
+				
+				<div id="deleteacc">
+					<p class="center"><a id="catquestion" href="php/deleteuser.php">Do you want to delete your account?</a></p>	
+				</div>
+				
+				<br>Designed and Developed by Ilias Chanis 2018-2019
 
 			</div>
 		

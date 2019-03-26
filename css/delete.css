@@ -1,0 +1,83 @@
+#main {
+	
+	margin-top: 55px;
+	
+}
+
+h1 {
+	
+	margin-top: 20px;
+	font-size: 50px;
+	
+}
+
+p {
+	
+	margin-top: 30px;
+	margin-bottom: 50px;
+	
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+}
+
+/*Creating input fields*/
+input[type=password]{
+	
+    width: auto;
+    padding: 15px;
+    margin: 0 auto;
+    display: block;
+    border: none;
+    background: #f0dbe7;
+	
+}
+
+input[type=password]:focus{
+	
+	background-color: #d5c3d1;
+    outline: none;
+	
+}
+
+.invalid {
+	box-shadow: 0 0 3px 1px red;
+}
+
+.invalid:focus {
+	box-shadow: none;
+}
+
+
+@media screen and (max-width: 600px) {
+	
+	h1 {
+	
+		font-size: 35px;
+	
+	}
+	
+}
+
+
+@media screen and (max-width: 400px)  {
+	
+	.footer {
+	
+		position: relative;
+		
+	}
+	
+}
+
+@media screen and (max-height: 500px)  {
+	
+	.footer {
+	
+		position: relative;
+		
+	}
+	
+}

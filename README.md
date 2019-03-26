@@ -5,6 +5,7 @@ The goal was to build a website where the user is able to create an account and 
 ## Disclaimer:
 Although you can use the code, keep in mind that this is by no means a professional work that can be considered safe.<br>
 While I have done my best, it can still contain code that it is not considered good practice and/or bugs and security hazards.<br>
+Also, the documentation is non-existent, however you could ask me to explain parts of the code.<br>
 I do not have any responsibility for the use of this code. 
 
 ## Language
@@ -12,7 +13,7 @@ It is written in pure HTML/CSS/JavaScript for front-end and PHP/SQL for back-end
 I did not use Bootstrap, jQuery or any other framework.
 
 ## Setup
-The files are ready to be uploaded on a server.
+The files are ready to be uploaded on a server.<br>
 The database (I have used MySQL) and its tables can be created with the following SQL code:
 ```
 CREATE DATABASE IF NOT EXISTS contactdirectory DEFAULT CHARACTER SET utf8;

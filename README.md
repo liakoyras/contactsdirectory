@@ -4,7 +4,7 @@ The goal was to build a Contacts Directory website, where the user is able to cr
 
 Features:
 * Sign up and Log in system
-* Saving, viewing, searching, editing and deleting contacts
+* Save, view, search, edit and delete contacts
 * Choose between two languages
 * Clear use instructions inside the page
 

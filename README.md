@@ -1,14 +1,20 @@
 # contactsdirectory
 This repository contains a website I created for a school project.<br>
-The goal was to build a website where the user is able to create an account and save contacts.
+The goal was to build a Contacts Directory website, where the user is able to create an account in order to save and view contacts.<br>
+
+Features:
+* Sign up and Log in system
+* Saving, viewing, searching, editing and deleting contacts
+* Choose between two languages
+* Clear use instructions inside the page
 
 ## Disclaimer:
-Although you can use the code, keep in mind that this is by no means a professional work that can be considered safe.<br>
-While I have done my best, it can still contain code that it is not considered good practice and/or bugs and security hazards.<br>
+Although you can use the code, keep in mind that this is by no means a professional work that can be considered safe to use as is.<br>
+While I have done my best, it can still contain code that it is not considered good practice and/or bugs and security hazards (for example the use of md5 encryption).<br>
 Also, the documentation is non-existent, however you could ask me to explain parts of the code.<br>
 I do not have any responsibility for the use of this code. 
 
-## Language
+## Languages
 It is written in pure HTML/CSS/JavaScript for front-end and PHP/SQL for back-end.
 I did not use Bootstrap, jQuery or any other framework.
 

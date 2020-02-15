@@ -1,5 +1,5 @@
 # contactsdirectory
-This repository contains a website I created for a school project.<br>
+This repository contains a website I created for a school project for the 3rd Semester course on Web Programming.<br>
 The goal was to build a Contacts Directory website, where the user is able to create an account in order to save and view contacts.<br>
 
 Features:
